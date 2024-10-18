@@ -1,3 +1,0 @@
-# POST http://localhost:5000/course?collegeName=coe&courseName=info
-
-GET http://localhost:5000/professor?fname=Vishal&lname=chawla&university=northeastern university

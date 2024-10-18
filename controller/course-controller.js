@@ -1,5 +1,4 @@
 const puppeteer = require("puppeteer");
-const getCoreJsonPrompt = require("../core/core");
 
 const extractTextInParentheses = (text) => {
   const match = text.match(/\(([^)]+)\)/);
@@ -107,23 +106,29 @@ const initializeScrapper = async (collegeName, courseName) => {
   return courses;
 };
 
-const scrapeCourses = async (req, res, next) => {
-  const courseName = req.query.courseName;
-  const collegeName = req.query.collegeName;
+const scrapeCourses = async (subjects, college) => {
   const extractedCourses = await getCourseNames();
-  let electiveName;
-  let electiveNumber;
+  var finalRes = [];
+  const courses = subjects.split(",");
 
-  if (
-    courseName == "coe" &&
-    !extractedCourses.includes(courseName.toUpperCase())
-  ) {
-    return res.status(400).send({ error: "Invalid course name." });
-  }
+  console.log(courses);
 
-  const body = await initializeScrapper(collegeName, courseName);
+  // ----------------- handle error later ---------------------------
+  courses.map((e) => {
+    if (college == "coe" && !extractedCourses.includes(e.toUpperCase())) {
+      throw "Invalid course";
+    }
+  });
 
-  res.send({ body });
+  const results = await Promise.all(
+    courses.map((course) => initializeScrapper(college, course))
+  );
+
+  results.forEach((result, index) => {
+    finalRes.push(result);
+  });
+
+  return finalRes;
 };
 
 module.exports = scrapeCourses;

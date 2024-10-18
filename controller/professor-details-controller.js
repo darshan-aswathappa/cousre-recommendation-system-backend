@@ -6,7 +6,6 @@ const getProfessorDetails = async (req, res, next) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  console.log("Here");
   const url = `https://www.coursicle.com/neu/courses/${course}/${courseId}/`;
   await page.goto(url);
 
