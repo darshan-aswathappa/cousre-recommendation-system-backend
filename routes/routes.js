@@ -6,7 +6,6 @@ const resumeReviewController = require("../controller/review-controller");
 const router = express.Router();
 
 router.get("/professor", getProfessor);
-router.get("/professor-details", getProfessorDetails);
 router.post("/resume-review", resumeReviewController);
 
 module.exports = router;

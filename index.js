@@ -1,5 +1,6 @@
 const express = require("express");
 const router = require("./routes/routes");
+const client = require("./database/core");
 
 const app = express();
 const port = 5000;
@@ -10,3 +11,5 @@ app.use("/", router);
 app.listen(port, host, () => {
   console.log(`Server started listening at ${host} on port ${port}.`);
 });
+
+client.connect();

@@ -1,13 +1,14 @@
 const puppeteer = require("puppeteer");
 
-const getProfessorDetails = async (req, res, next) => {
-  const course = req.query.course;
-  const courseId = req.query.courseId;
+const getProfessorDetails = async (course, courseId) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
+  await page.setUserAgent(
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+  );
   const url = `https://www.coursicle.com/neu/courses/${course}/${courseId}/`;
-  await page.goto(url);
+  await page.goto(url, { waitUntil: "networkidle2" });
 
   const professorNames = await page.evaluate(() => {
     const professorLinks = document.querySelectorAll(
@@ -18,8 +19,7 @@ const getProfessorDetails = async (req, res, next) => {
   });
 
   await browser.close();
-
-  res.send({ professorNames });
+  return professorNames;
 };
 
 module.exports = getProfessorDetails;

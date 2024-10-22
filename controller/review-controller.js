@@ -1,4 +1,5 @@
-const parseResumeToJson = require("../core/core");
+const { parseResumeToJson, resumeReviewClient } = require("../core/core");
+const ppxResume = require("../core/perplexity_core");
 const scrapeCourses = require("./course-controller");
 
 const resumeReviewController = async (req, res, next) => {
@@ -7,10 +8,18 @@ const resumeReviewController = async (req, res, next) => {
 
   try {
     const data = await scrapeCourses(courseName, collegeName);
-    const parsedData = await parseResumeToJson("./nisu.pdf");
-    res.send({ course: data, resume: parsedData });
+    const parsedData = await parseResumeToJson("./darshan.pdf");
+    // const combined = { course: data, resume: parsedData };
+    // console.log(combined);
+    // const review = await ppxResume(data, parsedData);
+    const gpt = await resumeReviewClient(data, parsedData);
+    res.send({
+      courses: data,
+      resume: parsedData,
+      review: JSON.parse(gpt),
+    });
   } catch (error) {
-    res.send(error);
+    res.status(500).send({ error: error.message });
   }
 };
 

@@ -1,0 +1,1678 @@
+[
+  {
+    "university_course_id": "137",
+    "credential": "MS",
+    "university_course_name": "Industrial Engineering",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28816,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57632,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "58448",
+    "credential": "MS",
+    "university_course_name": "Data Analytics Engineering",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 29824,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 59648,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "62344",
+    "credential": "MS",
+    "university_course_name": "Business Analytics",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "DAmore-McKim School of Business",
+    "course_level": "masters",
+    "converted_tuition_fee": 54480,
+    "duration": 12,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 54480,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "55340",
+    "credential": "MS",
+    "university_course_name": "Artificial Intelligence",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Khoury College of Computer Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 28560,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 57120,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "55349",
+    "credential": "Masters",
+    "university_course_name": "Professional Studies in Analytics ",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 50220,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 50220,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-04T00:00:00.000Z",
+        "type": "Winter",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "79411",
+    "credential": "MS",
+    "university_course_name": "Computer Science (Align)",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Khoury College of Computer Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 31416,
+    "duration": 30,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 78540,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "138",
+    "credential": "MS",
+    "university_course_name": "Mechanical Engineering",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 29824,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 59648,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": [
+      {
+        "deadline_date": "2024-12-01T00:00:00.000Z",
+        "type": "Fall",
+        "sub_type": "Early Action 1"
+      }
+    ]
+  },
+  {
+    "university_course_id": "134",
+    "credential": "MS",
+    "university_course_name": "Civil Engineering",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28816,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 57632,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "55072",
+    "credential": "MS",
+    "university_course_name": "Cyber Security",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Khoury College of Computer Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 26912,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 53824,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "76268",
+    "credential": "MS",
+    "university_course_name": "Software Engineering Systems",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28816,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57632,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "46128",
+    "credential": "MS",
+    "university_course_name": "Project Management",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 42075,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 42075,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "57956",
+    "credential": "MS",
+    "university_course_name": "Robotics",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28816,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57632,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "73747",
+    "credential": "MS",
+    "university_course_name": "Information Systems - Bridge",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28816,
+    "duration": 30,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 72040,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "67766",
+    "credential": "MS",
+    "university_course_name": "Regulatory Affairs",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 39330,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 39330,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-04T00:00:00.000Z",
+        "type": "Winter",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "49261",
+    "credential": "MS",
+    "university_course_name": "Health Informatics",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Bouvé College of Health Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 31900,
+    "duration": 18,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 47850,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "50602",
+    "credential": "MS",
+    "university_course_name": "Telecommunication Networks",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 39765,
+    "duration": 18,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 59648,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "61901",
+    "credential": "MS",
+    "university_course_name": "Cyber - Physical Systems",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 29840,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 59680,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "55346",
+    "credential": "MS",
+    "university_course_name": "Biotechnology",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Science",
+    "course_level": "masters",
+    "converted_tuition_fee": 31671,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 63342,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-01T00:00:00.000Z",
+        "type": "Spring",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "79487",
+    "credential": "MS",
+    "university_course_name": "Management",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "DAmore-McKim School of Business",
+    "course_level": "masters",
+    "converted_tuition_fee": 54500,
+    "duration": 12,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 54500,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "49257",
+    "credential": "Masters",
+    "university_course_name": "Professional Studies in Informatics ",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 50700,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 50700,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "133",
+    "credential": "MS",
+    "university_course_name": "Chemical Engineering",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28816,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 57632,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "31918",
+    "credential": "MS",
+    "university_course_name": "Bioinformatics",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Science",
+    "course_level": "masters",
+    "converted_tuition_fee": 29808,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 59616,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "139",
+    "credential": "MS",
+    "university_course_name": "Bioengineering",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 57632,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 57632,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "912",
+    "credential": "MS",
+    "university_course_name": "Energy Systems",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28816,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57632,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "58547",
+    "credential": "Masters",
+    "university_course_name": "Business Administration",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "DAmore-McKim School of Business",
+    "course_level": "masters",
+    "converted_tuition_fee": 42625,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 85250,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-10-24T00:00:00.000Z",
+        "type": "Fall",
+        "sub_type": "Round 1"
+      }
+    ]
+  },
+  {
+    "university_course_id": "52184",
+    "credential": "MS",
+    "university_course_name": "Pharmaceutics and Drug Delivery",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Bouvé College of Health Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 31020,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 62040,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "67204",
+    "credential": "MS",
+    "university_course_name": "Data Architecture and Management",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28816,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 57632,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "61889",
+    "credential": "Masters",
+    "university_course_name": "Applied Machine Intelligence ",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 50220,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 50220,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-04T00:00:00.000Z",
+        "type": "Winter",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "117163",
+    "credential": "MS",
+    "university_course_name": "Data Science (Align)",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Khoury College of Computer Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 28688,
+    "duration": 30,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 71720,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "28270",
+    "credential": "MS",
+    "university_course_name": "Electrical and Computer Engineering Leadership",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28800,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57600,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "52168",
+    "credential": "MFA",
+    "university_course_name": "Experience Design",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 59670,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 119340,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "26485",
+    "credential": "MS",
+    "university_course_name": "Operations Research",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Science",
+    "course_level": "masters",
+    "converted_tuition_fee": 28650,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57300,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "62665",
+    "credential": "MS",
+    "university_course_name": "Human Resources Management",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 38250,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 38250,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-04T00:00:00.000Z",
+        "type": "Winter",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "55224",
+    "credential": "MS",
+    "university_course_name": "International Management",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "DAmore-McKim School of Business",
+    "course_level": "masters",
+    "converted_tuition_fee": 54480,
+    "duration": 12,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 54480,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "52161",
+    "credential": "MS",
+    "university_course_name": "Game Science and Design",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 32198,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 64396,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "67202",
+    "credential": "MS",
+    "university_course_name": "Pharmacology",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Bouvé College of Health Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 31020,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 62040,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "52595",
+    "credential": "MS",
+    "university_course_name": "Environmental Engineering",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 29824,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 59648,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "116859",
+    "credential": "MS",
+    "university_course_name": "Quantitative Finance",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "DAmore-McKim School of Business",
+    "course_level": "masters",
+    "converted_tuition_fee": 54500,
+    "duration": 12,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 54500,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-10-24T00:00:00.000Z",
+        "type": "Fall",
+        "sub_type": "Round 1"
+      }
+    ]
+  },
+  {
+    "university_course_id": "112567",
+    "credential": "MS",
+    "university_course_name": "Biomedical Science ",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Bouvé College of Health Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 28900,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57800,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "73681",
+    "credential": "MS",
+    "university_course_name": "Economics",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Social Sciences and Humanities",
+    "course_level": "masters",
+    "converted_tuition_fee": 49120,
+    "duration": 12,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 49120,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "54774",
+    "credential": "MS",
+    "university_course_name": "Sustainable Building Systems",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 27840,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 55680,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "116044",
+    "credential": "MA",
+    "university_course_name": "Product Development",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28800,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57600,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "80950",
+    "credential": "Masters",
+    "university_course_name": "Architecture",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 67626,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 135252,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2025-01-15T00:00:00.000Z",
+        "type": "Fall",
+        "sub_type": "Final Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "79155",
+    "credential": "MS",
+    "university_course_name": "Counseling Psychology",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Bouvé College of Health Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 59200,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 118400,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "85458",
+    "credential": "MFA",
+    "university_course_name": "Information Design and Data Visualization",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 56820,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 113640,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "51711",
+    "credential": "Masters",
+    "university_course_name": "Professional Studies in Digital Media",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 40560,
+    "duration": 15,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 50700,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "67774",
+    "credential": "Masters",
+    "university_course_name": "Digital Media Connect",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 42067,
+    "duration": 18,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 63100,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "114058",
+    "credential": "MS",
+    "university_course_name": "Wireless and Network Engineering",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28800,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57600,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "62656",
+    "credential": "MS",
+    "university_course_name": "Applied Mathematics",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Science",
+    "course_level": "masters",
+    "converted_tuition_fee": 59616,
+    "duration": 12,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 59616,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-01T00:00:00.000Z",
+        "type": "Spring",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "80740",
+    "credential": "MS",
+    "university_course_name": "Information Design and Data Visualization",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 60608,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 60608,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "116984",
+    "credential": "MS",
+    "university_course_name": "Experience Design",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 60608,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 60608,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "117693",
+    "credential": "MS",
+    "university_course_name": "Cybersecurity (Align)",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Khoury College of Computer Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 31416,
+    "duration": 30,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 78540,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "80095",
+    "credential": "MS",
+    "university_course_name": "Environmental Science and Policy",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Science",
+    "course_level": "masters",
+    "converted_tuition_fee": 42267,
+    "duration": 18,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 63400,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-01T00:00:00.000Z",
+        "type": "Spring",
+        "sub_type": "Final Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "62658",
+    "credential": "LLM",
+    "university_course_name": "Law ",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "School of Law",
+    "course_level": "masters",
+    "converted_tuition_fee": 47120,
+    "duration": 9,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 47120,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "55358",
+    "credential": "MS",
+    "university_course_name": "Global Studies and International Relations",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 40204,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 40204,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "73458",
+    "credential": "MS",
+    "university_course_name": "Applied Physics and Engineering",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Science",
+    "course_level": "masters",
+    "converted_tuition_fee": 55360,
+    "duration": 12,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 55360,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "55357",
+    "credential": "MS",
+    "university_course_name": "Corporate and Organizational Communication",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 39800,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 39800,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-04T00:00:00.000Z",
+        "type": "Winter",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "61904",
+    "credential": "MDes",
+    "university_course_name": "Sustainable Urban Environments",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 54120,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 108240,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "62657",
+    "credential": "Masters",
+    "university_course_name": "Law with co-op",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "School of Law",
+    "course_level": "masters",
+    "converted_tuition_fee": 58648,
+    "duration": 12,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 58648,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "114221",
+    "credential": "Masters",
+    "university_course_name": "Public Policy",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Social Sciences and Humanities",
+    "course_level": "masters",
+    "converted_tuition_fee": 19580,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 39160,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "62664",
+    "credential": "Masters",
+    "university_course_name": "Sport Leadership",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 39780,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 39780,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-04T00:00:00.000Z",
+        "type": "Winter",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "116652",
+    "credential": "MS",
+    "university_course_name": "Human Factors",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28800,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57600,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "114245",
+    "credential": "MS",
+    "university_course_name": "Physics",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Science",
+    "course_level": "masters",
+    "converted_tuition_fee": 55400,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 110800,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "81459",
+    "credential": "MS",
+    "university_course_name": "Applied Psychology",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Bouvé College of Health Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 52560,
+    "duration": 12,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 52560,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "73474",
+    "credential": "MS",
+    "university_course_name": "Mathematics",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Science",
+    "course_level": "masters",
+    "converted_tuition_fee": 27680,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 55360,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "115189",
+    "credential": "MA",
+    "university_course_name": "Journalism",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 45456,
+    "duration": 18,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 68184,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "67765",
+    "credential": "MS",
+    "university_course_name": "Organizational Leadership",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 39780,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 39780,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-04T00:00:00.000Z",
+        "type": "Winter",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "55359",
+    "credential": "MS",
+    "university_course_name": "Commerce and Economic Development",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 43200,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 43200,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "115803",
+    "credential": "Masters",
+    "university_course_name": "Insurance Analytics and Management",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 36800,
+    "duration": 12,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 36800,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "117636",
+    "credential": "MS",
+    "university_course_name": "Advanced and Intelligent Manufacturing",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28816,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 57632,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "117685",
+    "credential": "MS",
+    "university_course_name": "Internet of Things",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Engineering",
+    "course_level": "masters",
+    "converted_tuition_fee": 28816,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 57632,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "117771",
+    "credential": "MS",
+    "university_course_name": "Nanomedicine",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Science",
+    "course_level": "masters",
+    "converted_tuition_fee": 31671,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 63342,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-01T00:00:00.000Z",
+        "type": "Spring",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "117687",
+    "credential": "MS",
+    "university_course_name": "Extended Realities",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 32198,
+    "duration": 24,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 64396,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "114648",
+    "credential": "Masters",
+    "university_course_name": "Human Movement and Rehabilitation Sciences",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "Bouvé College of Health Sciences",
+    "course_level": "masters",
+    "converted_tuition_fee": 56100,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 56100,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "83964",
+    "credential": "MS",
+    "university_course_name": "Urban Planning and Policy",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Social Sciences and Humanities",
+    "course_level": "masters",
+    "converted_tuition_fee": 31200,
+    "duration": 24,
+    "is_fee_waived": false,
+    "actual_tuition_fee": 62400,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": false,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "117688",
+    "credential": "MS",
+    "university_course_name": "Media Innovation and Data Communication",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 45456,
+    "duration": 18,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 68184,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "55352",
+    "credential": "MS",
+    "university_course_name": "Nonprofit Management",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": "College of Professional Studies",
+    "course_level": "masters",
+    "converted_tuition_fee": 38250,
+    "duration": 12,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 38250,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": [
+      {
+        "deadline_date": "2024-11-06T00:00:00.000Z",
+        "type": "Winter",
+        "sub_type": "Standard Deadline"
+      }
+    ]
+  },
+  {
+    "university_course_id": "117686",
+    "credential": "Masters",
+    "university_course_name": "Architecture - Three-Year Track ",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 65659,
+    "duration": 36,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 196976,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  },
+  {
+    "university_course_id": "117619",
+    "credential": "MS",
+    "university_course_name": "Media Advocacy",
+    "university_id": "736",
+    "slug": "northeastern-university-boston",
+    "school_name": " College of Arts, Media and Design",
+    "course_level": "masters",
+    "converted_tuition_fee": 40405,
+    "duration": 18,
+    "is_fee_waived": true,
+    "actual_tuition_fee": 60608,
+    "level": 2,
+    "data": {
+      "bachelors_default_duration": 4,
+      "masters_default_duration": 2
+    },
+    "is_partner": true,
+    "deadlines": []
+  }
+]
