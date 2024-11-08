@@ -155,7 +155,9 @@ const resumeReviewClient = async (courseData, resumeData) => {
         entry-level detailed and very specific to courses recommended job roles after graduation with the recommended courses.
 
         Go through the entire courses JSON and then create a 4-semester plan where the person must and should pick a 
-        compulsory 8 credits in each semester (8 credits is required to maintain student status). The course work must be dynamic, subjects must be spread out and all subjects should not be picked from one discipline (For example if i have courses offered from two disciplines CSYE and INFO, then make sure equal courses are recommended from each discipline).   
+        compulsory 8 credits in each semester (8 credits is required to maintain student status). The course work must be dynamic, 
+        subjects must be spread out and all subjects should not be picked from one discipline (For example if i have courses offered from 
+        two disciplines CSYE and INFO, then make sure equal courses are recommended from each discipline).   
 
         The semesters are divided into Fall, Spring, Fall, and Spring. Ensure that
         when selecting subjects, you consider pre-requisites and corequisites,

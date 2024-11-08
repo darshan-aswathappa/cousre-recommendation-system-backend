@@ -1,9 +1,8 @@
 const puppeteer = require("puppeteer");
-const {
-  collectionExists,
-  getCourseFromCollection,
-  storeCourseInCollection,
-} = require("../database/helpers/course");
+const storeCourseInCollection = require("../database/helpers/course");
+const client = require("../database/core");
+
+const db = client.db("courses");
 
 const extractTextInParentheses = (text) => {
   const match = text.match(/\(([^)]+)\)/);
@@ -122,29 +121,6 @@ const initializeScrapper = (collegeName, courseName) => {
   });
 };
 
-// const scrapeCourses = async (subjects, college) => {
-//   const extractedCourses = await getCourseNames();
-//   var finalRes = [];
-//   const courses = subjects.split(",");
-
-//   // ----------------- handle error later ---------------------------
-//   courses.map((e) => {
-//     if (college == "coe" && !extractedCourses.includes(e.toUpperCase())) {
-//       throw "Invalid course";
-//     }
-//   });
-
-//   const results = await Promise.all(
-//     courses.map((course) => initializeScrapper(college, course))
-//   );
-
-//   results.forEach((result, index) => {
-//     finalRes.push(result);
-//   });
-
-//   return finalRes;
-// };
-
 const scrapeCourses = async (subjects, college) => {
   const extractedCourses = await getCourseNames();
   const courses = subjects.split(",");
@@ -157,23 +133,19 @@ const scrapeCourses = async (subjects, college) => {
   });
 
   for (const course of courses) {
-    const collectionExistsForCourse = await collectionExists(course);
-
-    if (collectionExistsForCourse) {
-      const courseData = await getCourseFromCollection(course);
-      finalRes.push(...courseData);
-    } else {
-      try {
-        const scrapedCourses = await initializeScrapper(college, course);
-        await storeCourseInCollection(course, scrapedCourses);
-        finalRes.push(...scrapedCourses);
-      } catch (error) {
-        console.error(`Error scraping course ${course}:`, error);
-      }
+    try {
+      const scrapedCourses = await initializeScrapper(college, course);
+      const res = await storeCourseInCollection(scrapedCourses);
+      finalRes.push(...res);
+    } catch (error) {
+      console.error(`Error scraping course ${course}:`, error);
     }
   }
 
-  return finalRes;
+  const sanitizedCourses = finalRes.map(
+    ({ _id, embedding, embedding_text, ...rest }) => rest
+  );
+  return sanitizedCourses;
 };
 
 module.exports = scrapeCourses;

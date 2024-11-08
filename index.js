@@ -6,10 +6,22 @@ const app = express();
 const port = 5000;
 const host = "localhost";
 
+app.use(express.json());
 app.use("/", router);
 
-app.listen(port, host, () => {
-  console.log(`Server started listening at ${host} on port ${port}.`);
-});
+async function startServer() {
+  try {
+    await client.connect();
+    await client.db("courses").command({ ping: 1 });
+    console.log("Successfully connected to MongoDB!");
 
-client.connect();
+    app.listen(port, host, () => {
+      console.log(`Server started listening at http://${host}:${port}`);
+    });
+  } catch (error) {
+    console.error("Failed to connect to MongoDB:", error);
+    process.exit(1);
+  }
+}
+
+startServer();

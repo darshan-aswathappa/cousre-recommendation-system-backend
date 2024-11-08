@@ -6,6 +6,7 @@ const getProfessor = async (req, res, next) => {
   const courseName = req.query.courseName;
   const courseId = req.query.courseId;
   const professors = await getProfessorDetails(courseName, courseId);
+  console.log(professors);
 
   const professorDetails = await Promise.all(
     professors.map(async (professorName) => {
@@ -45,6 +46,8 @@ const getProfessor = async (req, res, next) => {
       }
     })
   );
+  console.log(professorDetails);
+
   res.send(professorDetails);
 };
 
