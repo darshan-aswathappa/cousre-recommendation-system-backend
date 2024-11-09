@@ -128,9 +128,7 @@ const callAgent = async (client, query, thread_id) => {
       state.context = { ...state.context, parsedData };
       return {
         messages: [
-          new SystemMessage(
-            `Resume parsed data: ${JSON.stringify(parsedData)}`
-          ),
+          new HumanMessage(`Resume parsed data: ${JSON.stringify(parsedData)}`),
         ],
       };
     })
