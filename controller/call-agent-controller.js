@@ -1,20 +1,27 @@
 const callAgent = require("../controller/rag-resume");
 const client = require("../database/core");
-const callAgentThreadController = require("../controller/agent-chat-thread-controller");
 const system_prompt = require("../core/ai/prompt/system_prompt");
+const jsonExtractor = require("../core/ai/helper/json_extractor");
+const { parseResumeToJson } = require("../core/core");
 
 const callAgentController = async (req, res) => {
   const initialMessage = req.body.message;
   const threadId = Date.now().toString();
 
-  const message = `Using the provided resume and course data, create a recommended 4-semester plan that fulfills 32 credits and aligns with the skills and experience listed in my resume. Recommend subjects from ${initialMessage} ONLY. Ensure that all rules are followed from the rule templated provided here ${system_prompt}. Provide JSON array object only and NO text at all.`;
+  const message = `
+  courses: ${initialMessage} 
+  system template with data and rules: ${system_prompt}`;
 
   try {
-    const response = await callAgent(client, message, threadId);
-
+    const resumeData = await parseResumeToJson("./darshan.pdf");
+    const response = await callAgent(client, message, resumeData, threadId);
+    // const extractJson = await jsonExtractor(response);
+    const serialized_response = response
+      .replace("```json", "")
+      .replace("```", "");
     res.json({
       threadId,
-      res: JSON.parse(response),
+      res: JSON.parse(serialized_response),
     });
   } catch (error) {
     console.error("Error starting conversation:", error);

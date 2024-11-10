@@ -2,8 +2,6 @@ const puppeteer = require("puppeteer");
 const storeCourseInCollection = require("../database/helpers/course");
 const client = require("../database/core");
 
-const db = client.db("courses");
-
 const extractTextInParentheses = (text) => {
   const match = text.match(/\(([^)]+)\)/);
   return match ? match[1] : null;
@@ -135,7 +133,20 @@ const scrapeCourses = async (subjects, college) => {
   for (const course of courses) {
     try {
       const scrapedCourses = await initializeScrapper(college, course);
-      const res = await storeCourseInCollection(scrapedCourses);
+      const filteredCourses = scrapedCourses.filter((course) => {
+        const keywords = [
+          "directed study",
+          "elective",
+          "project",
+          "thesis",
+          "special topics",
+        ];
+        const containsKeywords = keywords.some((keyword) =>
+          course.subject.toLowerCase().includes(keyword.toLowerCase())
+        );
+        return !containsKeywords && course.credits > 0;
+      });
+      const res = await storeCourseInCollection(filteredCourses);
       finalRes.push(...res);
     } catch (error) {
       console.error(`Error scraping course ${course}:`, error);

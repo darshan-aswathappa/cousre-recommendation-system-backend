@@ -1,9 +1,8 @@
 const { MongoDBAtlasVectorSearch } = require("@langchain/mongodb");
-const { OpenAIEmbeddings } = require("@langchain/openai");
-const { ChatAnthropic } = require("@langchain/anthropic");
+const { OpenAIEmbeddings, ChatOpenAI } = require("@langchain/openai");
+const { z } = require("zod");
 const { tool } = require("@langchain/core/tools");
 const { parseResumeToJson } = require("../core/core");
-const { z } = require("zod");
 const { ToolNode } = require("@langchain/langgraph/prebuilt");
 const {
   ChatPromptTemplate,
@@ -14,11 +13,43 @@ const { StateGraph, Annotation } = require("@langchain/langgraph");
 const { MongoDBSaver } = require("@langchain/langgraph-checkpoint-mongodb");
 const generateEmbedding = require("../core/ai/helper/embeddings");
 const system_prompt = require("../core/ai/prompt/system_prompt");
+const { StructuredOutputParser } = require("langchain/output_parsers");
 
-const callAgent = async (client, query, thread_id) => {
+const callAgent = async (client, query, parsedData, thread_id) => {
   const dbName = "courses";
   const db = client.db(dbName);
   const collection = db.collection("all");
+
+  const CourseSchema = z.object({
+    courseName: z.string().describe("Full name of the course"),
+    courseNumber: z.string().describe("Course number"),
+    courseDescription: z
+      .string()
+      .describe("Full detailed description of the course being picked"),
+    reasoning: z
+      .string()
+      .describe(
+        "Detailed reasoning as to why the course was picked and how the course will help the user"
+      ),
+    credits: z.number().describe("Total credits for the picked course"),
+    prerequisites: z
+      .string()
+      .describe("Detailed information about the course prerequisites if any"),
+    corequisites: z
+      .string()
+      .describe("Detailed information about the course corequisites if any"),
+  });
+
+  const SemesterSchema = z.array(CourseSchema);
+
+  const CoursePlanSchema = z.object({
+    semester_1: SemesterSchema,
+    semester_2: SemesterSchema,
+    semester_3: SemesterSchema,
+    semester_4: SemesterSchema,
+  });
+
+  const outputParser = StructuredOutputParser.fromZodSchema(CoursePlanSchema);
 
   const GraphState = Annotation.Root({
     messages: Annotation({
@@ -27,7 +58,7 @@ const callAgent = async (client, query, thread_id) => {
   });
 
   const courseLookupTool = tool(
-    async ({ query, n = 10 }) => {
+    async ({ query, n = 8 }) => {
       console.log("course lookup tool was called");
 
       const dbConfig = {
@@ -47,7 +78,6 @@ const callAgent = async (client, query, thread_id) => {
         queryEmbedding,
         n
       );
-
       return JSON.stringify(result);
     },
     {
@@ -55,7 +85,11 @@ const callAgent = async (client, query, thread_id) => {
       description:
         "Gathers course related information for a user's resume based on the parsed JSON data.",
       schema: z.object({
-        query: z.string().describe("The search query"),
+        query: z
+          .string()
+          .describe(
+            "The search query, the search query will have the courses from which the user would like the subjects to be picked from."
+          ),
         n: z
           .number()
           .optional()
@@ -65,30 +99,13 @@ const callAgent = async (client, query, thread_id) => {
     }
   );
 
-  const parseJsonTool = tool(
-    async ({ filePath }) => {
-      console.log("resume parse tool was called!");
-
-      const parsedData = await parseResumeToJson(filePath);
-      return parsedData;
-    },
-    {
-      name: "json_parser",
-      description:
-        "Parses a JSON file to extract structured data for further processing",
-      schema: z.object({
-        filePath: z.string().describe("The path to the JSON file"),
-      }),
-    }
-  );
-
-  const tools = [parseJsonTool, courseLookupTool];
+  const tools = [courseLookupTool];
   const toolNode = new ToolNode(tools);
 
-  const model = new ChatAnthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY,
-    model: "claude-3-5-sonnet-20241022",
-    temperature: 0,
+  const model = new ChatOpenAI({
+    apiKey: process.env.OPEN_API_TOKEN,
+    model: "gpt-4o-mini",
+    temperature: 0.1,
   }).bindTools(tools);
 
   async function callModel(state) {
@@ -97,23 +114,23 @@ const callAgent = async (client, query, thread_id) => {
       new MessagesPlaceholder("messages"),
     ]);
 
-    const parsedData = state.context?.parsedData;
-
     const formattedPrompt = await prompt.formatMessages({
       resume_data: JSON.stringify(parsedData),
       time: new Date().toISOString(),
       tool_names: tools.map((tool) => tool.name).join(","),
       messages: state.messages,
+      format_instructions: outputParser.getFormatInstructions(),
+      courses: query,
     });
 
     const result = await model.invoke(formattedPrompt);
+
     return { messages: [result] };
   }
 
   function shouldContinue(state) {
     const messages = state.messages;
     const lastMessage = messages[messages.length - 1];
-
     if (lastMessage.tool_calls?.length) {
       return "tools";
     }
@@ -121,21 +138,9 @@ const callAgent = async (client, query, thread_id) => {
   }
 
   const workflow = new StateGraph(GraphState)
-    .addNode("parse_json", async (state) => {
-      const parsedData = await parseJsonTool.invoke({
-        filePath: "./darshan.pdf",
-      });
-      state.context = { ...state.context, parsedData };
-      return {
-        messages: [
-          new HumanMessage(`Resume parsed data: ${JSON.stringify(parsedData)}`),
-        ],
-      };
-    })
     .addNode("agent", callModel)
     .addNode("tools", toolNode)
-    .addEdge("__start__", "parse_json")
-    .addEdge("parse_json", "agent")
+    .addEdge("__start__", "agent")
     .addConditionalEdges("agent", shouldContinue)
     .addEdge("tools", "agent");
 
