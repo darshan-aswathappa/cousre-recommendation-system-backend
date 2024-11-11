@@ -25,11 +25,11 @@ const callAgent = async (client, query, parsedData, thread_id) => {
     courseNumber: z.string().describe("Course number"),
     courseDescription: z
       .string()
-      .describe("Full detailed description of the course being picked"),
+      .describe("Fully detailed description of the course being picked."),
     reasoning: z
       .string()
       .describe(
-        "Detailed reasoning as to why the course was picked and how the course will help the user"
+        "Fully Detailed reasoning as to why the course was picked and how it aligns with the users resume, what data in the users resume made you feel this was a right choice. Be very particular and highlight the exact points in the resume that made you think this course is a good fit for the user. Also point and mention the experiences or projects that helped you pick this course."
       ),
     credits: z.number().describe("Total credits for the picked course"),
     prerequisites: z
@@ -58,7 +58,7 @@ const callAgent = async (client, query, parsedData, thread_id) => {
   });
 
   const courseLookupTool = tool(
-    async ({ query, n = 8 }) => {
+    async ({ query, n }) => {
       console.log("course lookup tool was called");
 
       const dbConfig = {
@@ -90,11 +90,7 @@ const callAgent = async (client, query, parsedData, thread_id) => {
           .describe(
             "The search query, the search query will have the courses from which the user would like the subjects to be picked from."
           ),
-        n: z
-          .number()
-          .optional()
-          .default(8)
-          .describe("Number of results to return"),
+        n: z.number().describe("Number of results to return"),
       }),
     }
   );
@@ -105,7 +101,7 @@ const callAgent = async (client, query, parsedData, thread_id) => {
   const model = new ChatOpenAI({
     apiKey: process.env.OPEN_API_TOKEN,
     model: "gpt-4o-mini",
-    temperature: 0.1,
+    temperature: 0,
   }).bindTools(tools);
 
   async function callModel(state) {
@@ -115,7 +111,7 @@ const callAgent = async (client, query, parsedData, thread_id) => {
     ]);
 
     const formattedPrompt = await prompt.formatMessages({
-      resume_data: JSON.stringify(parsedData),
+      resume_data: parsedData,
       time: new Date().toISOString(),
       tool_names: tools.map((tool) => tool.name).join(","),
       messages: state.messages,

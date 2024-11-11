@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@langchain/anthropic": "^0.3.7",
-    "@langchain/community": "^0.3.11",
+    "@langchain/community": "^0.3.12",
     "@langchain/langgraph": "^0.2.20",
     "@langchain/langgraph-checkpoint-mongodb": "^0.0.4",
     "@langchain/mongodb": "^0.1.0",

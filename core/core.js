@@ -3,6 +3,9 @@ const pdfParse = require("pdf-parse");
 const { zodResponseFormat } = require("openai/helpers/zod");
 const z = require("zod");
 const aiClient = require("./ai/init");
+const { PDFLoader } = require("@langchain/community/document_loaders/fs/pdf");
+const { RecursiveCharacterTextSplitter } = require("@langchain/textsplitters");
+const generateEmbedding = require("./ai/helper/embeddings");
 
 const resumeJsonResponse = z.object({
   email: z.string(),
@@ -77,4 +80,26 @@ const passTextToOpenAI = async (text) => {
   return completion.choices[0].message.content;
 };
 
-module.exports = { parseResumeToJson };
+const generateResumeEmbeddings = async (resumePath) => {
+  try {
+    const loader = new PDFLoader(resumePath);
+    const docs = await loader.load();
+
+    const textSplitter = new RecursiveCharacterTextSplitter({
+      chunkSize: 1000,
+      chunkOverlap: 200,
+    });
+    const chunkedDocs = await textSplitter.splitDocuments(docs);
+    const validChunks = chunkedDocs.filter(
+      (doc) => doc.pageContent && doc.pageContent.trim().length > 0
+    );
+    const chunkedTexts = validChunks.map((doc) => doc.pageContent);
+    const pdfEmbedding = await generateEmbedding(chunkedTexts);
+    return pdfEmbedding;
+  } catch (error) {
+    console.error(error);
+    throw new Error("PDF docs chunking failed !");
+  }
+};
+
+module.exports = { parseResumeToJson, generateResumeEmbeddings };

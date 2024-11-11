@@ -2,7 +2,7 @@ const callAgent = require("../controller/rag-resume");
 const client = require("../database/core");
 const system_prompt = require("../core/ai/prompt/system_prompt");
 const jsonExtractor = require("../core/ai/helper/json_extractor");
-const { parseResumeToJson } = require("../core/core");
+const { parseResumeToJson, generateResumeEmbeddings } = require("../core/core");
 
 const callAgentController = async (req, res) => {
   const initialMessage = req.body.message;

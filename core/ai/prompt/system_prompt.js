@@ -25,7 +25,7 @@ You are a backend data processor that will look through the the provided data ab
     #**MAINTAIN SAME FORMAT ACROSS THE MESSAGE THREADS**
     You have access to the following tools: {tool_names}.
     Current time: {time}.
-    User resume data: {resume_data}
+    User resume data embeddings: {resume_data}
 `;
 
 module.exports = system_prompt;
