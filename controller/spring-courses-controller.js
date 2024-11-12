@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
 const generateEmbedding = require("../core/ai/helper/embeddings");
 const client = require("../database/core");
+const { getProfessorInd } = require("./professor-controller");
 
 const db = client.db("syllabus");
 const collection = db.collection("spring2025");
@@ -23,6 +24,7 @@ const scrapeCourses = async () => {
 
   console.log("Inside iframe, scraping course data...");
 
+  // Gather course data without calling getProfessorInd inside evaluate
   const courses = await iframePage.evaluate(() => {
     const tableSelectors = [
       "#msisboston",
@@ -35,6 +37,7 @@ const scrapeCourses = async () => {
       const courseRows = Array.from(
         document.querySelectorAll(`${selector} table tbody tr`)
       );
+
       const coursesFromTable = courseRows.map((row) => {
         const columns = row.querySelectorAll("td");
         const courseName = columns[0].innerText.split("-")[0];
@@ -43,13 +46,12 @@ const scrapeCourses = async () => {
         const syllabusLink = columns[4].querySelector("a")
           ? columns[4].querySelector("a").href
           : null;
-        const embeddedText = `${courseName} is offered by ${instructor} at time ${time} and the syllabus link is available at ${syllabusLink}`;
+
         return {
           courseName,
           instructor,
           time,
           syllabus: syllabusLink,
-          embedding_text: embeddedText,
         };
       });
 
@@ -61,7 +63,27 @@ const scrapeCourses = async () => {
 
   await browser.close();
 
-  return courses;
+  // Process each course data in Node.js context
+  const coursesWithMetadata = await Promise.all(
+    courses.map(async (course) => {
+      const professorMetadata = await getProfessorInd(course.instructor);
+      const embeddedText = `${course.courseName} is offered by ${
+        course.instructor
+      } at time ${course.time} and the syllabus link is available at ${
+        course.syllabus
+      }. More information about the professor is available from metadata : ${JSON.stringify(
+        professorMetadata
+      )}`;
+
+      return {
+        ...course,
+        embedding_text: embeddedText,
+        professorMetadata,
+      };
+    })
+  );
+
+  return coursesWithMetadata;
 };
 
 const scrapeSpringCourses = async (req, res) => {

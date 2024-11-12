@@ -1,5 +1,4 @@
 const getProfessorDetails = require("./professor-details-controller");
-
 const ratings = require("@mtucourses/rate-my-professors").default;
 
 const getProfessors = async (req, res, next) => {
