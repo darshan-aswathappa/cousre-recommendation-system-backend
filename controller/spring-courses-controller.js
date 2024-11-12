@@ -37,7 +37,7 @@ const scrapeCourses = async () => {
       );
       const coursesFromTable = courseRows.map((row) => {
         const columns = row.querySelectorAll("td");
-        const courseName = columns[0].innerText.split(" ")[0];
+        const courseName = columns[0].innerText.split("-")[0];
         const instructor = columns[2].innerText.trim().replace(",", "");
         const time = columns[3].innerText.trim();
         const syllabusLink = columns[4].querySelector("a")
