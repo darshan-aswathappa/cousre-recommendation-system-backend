@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
 const generateEmbedding = require("../core/ai/helper/embeddings");
 const client = require("../database/core");
+const scrapeProfessorPage = require("./professor/utils/scrape-professor");
 const { getProfessorInd } = require("./professor-controller");
 
 const db = client.db("syllabus");
@@ -24,7 +25,6 @@ const scrapeCourses = async () => {
 
   console.log("Inside iframe, scraping course data...");
 
-  // Gather course data without calling getProfessorInd inside evaluate
   const courses = await iframePage.evaluate(() => {
     const tableSelectors = [
       "#msisboston",
@@ -63,22 +63,36 @@ const scrapeCourses = async () => {
 
   await browser.close();
 
-  // Process each course data in Node.js context
+  const professorUrls = {
+    "Yu Chen-Hsiang": "yu-jones",
+    "Knowlton Deborah": "knowlton-debbie",
+    "Jones Jr James": "jones-jr-james",
+    "Montrond Manuel": "montrond-manny",
+  };
+
   const coursesWithMetadata = await Promise.all(
     courses.map(async (course) => {
       const professorMetadata = await getProfessorInd(course.instructor);
+
+      let res;
+      const professorUrl = professorUrls[course.instructor];
+      if (professorUrl) {
+        res = await scrapeProfessorPage(professorUrl);
+      } else {
+        res = await scrapeProfessorPage(course.instructor.replace(" ", "-"));
+      }
       const embeddedText = `${course.courseName} is offered by ${
         course.instructor
       } at time ${course.time} and the syllabus link is available at ${
         course.syllabus
       }. More information about the professor is available from metadata : ${JSON.stringify(
         professorMetadata
+      )}. And more personal information about the professor is available at : ${JSON.stringify(
+        res
       )}`;
-
       return {
         ...course,
         embedding_text: embeddedText,
-        professorMetadata,
       };
     })
   );
