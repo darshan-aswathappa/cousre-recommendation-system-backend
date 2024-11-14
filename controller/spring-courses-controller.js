@@ -3,6 +3,7 @@ const generateEmbedding = require("../core/ai/helper/embeddings");
 const client = require("../database/core");
 const scrapeProfessorPage = require("./professor/utils/scrape-professor");
 const { getProfessorInd } = require("./professor-controller");
+const parseTextFromPdf = require("./professor/utils/parse-pdf-course");
 
 const db = client.db("syllabus");
 const collection = db.collection("spring2025");
@@ -40,7 +41,8 @@ const scrapeCourses = async () => {
 
       const coursesFromTable = courseRows.map((row) => {
         const columns = row.querySelectorAll("td");
-        const courseName = columns[0].innerText.split("-")[0];
+        const courseNumber = columns[0].innerText.split("-")[0];
+        const courseName = columns[0].innerText.split("-")[1];
         const instructor = columns[2].innerText.trim().replace(",", "");
         const time = columns[3].innerText.trim();
         const syllabusLink = columns[4].querySelector("a")
@@ -48,6 +50,7 @@ const scrapeCourses = async () => {
           : null;
 
         return {
+          courseNumber,
           courseName,
           instructor,
           time,
@@ -81,17 +84,24 @@ const scrapeCourses = async () => {
       } else {
         res = await scrapeProfessorPage(course.instructor.replace(" ", "-"));
       }
-      const embeddedText = `${course.courseName} is offered by ${
-        course.instructor
-      } at time ${course.time} and the syllabus link is available at ${
+      const syllabusData = await parseTextFromPdf(course.syllabus);
+
+      const embeddedText = `${course.courseNumber} - ${
+        course.courseName
+      } is offered by ${course.instructor} at time ${
+        course.time
+      } and the syllabus link is available at ${
         course.syllabus
       }. More information about the professor is available from metadata : ${JSON.stringify(
         professorMetadata
       )}. And more personal information about the professor is available at : ${JSON.stringify(
         res
+      )}. Professor syllabus content and grading information can be found at : ${JSON.stringify(
+        syllabusData
       )}`;
       return {
         ...course,
+        syllabusData,
         embedding_text: embeddedText,
       };
     })
@@ -100,14 +110,41 @@ const scrapeCourses = async () => {
   return coursesWithMetadata;
 };
 
+const tokenizeText = (text, maxTokens) => {
+  const words = text.split(" ");
+  const chunks = [];
+  for (let i = 0; i < words.length; i += maxTokens) {
+    chunks.push(words.slice(i, i + maxTokens).join(" "));
+  }
+  return chunks;
+};
+
+const getChunkedEmbeddings = async (text, maxTokens = 500) => {
+  const textChunks = tokenizeText(text, maxTokens);
+
+  const chunkEmbeddings = await Promise.all(
+    textChunks.map((chunk) => generateEmbedding(chunk))
+  );
+
+  const aggregatedEmbedding = chunkEmbeddings[0].map(
+    (_, i) =>
+      chunkEmbeddings.reduce((sum, embedding) => sum + embedding[i], 0) /
+      chunkEmbeddings.length
+  );
+
+  return aggregatedEmbedding;
+};
+
 const scrapeSpringCourses = async (req, res) => {
   const allCourses = await scrapeCourses();
+
   await Promise.all(
     allCourses.map(async (course) => {
-      const embeddings = await generateEmbedding(course.embedding_text);
-      course.embedding = embeddings;
+      const courseEmbedding = await getChunkedEmbeddings(course.embedding_text);
+      course.embedding = courseEmbedding;
     })
   );
+
   await collection.insertMany(allCourses);
   res.send("saved 2025 courses to database");
 };

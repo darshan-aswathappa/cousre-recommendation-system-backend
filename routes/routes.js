@@ -20,4 +20,5 @@ router.post("/rag-review/:threadId", callAgentThreadController);
 router.post("/spring2025", scrapeSpringCourses);
 router.post("/course-information", courseInformationController);
 router.get("/prof-scraper", scrapeProfessorController);
+
 module.exports = router;
