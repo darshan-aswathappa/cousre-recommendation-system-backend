@@ -3,10 +3,13 @@ const router = require("./routes/routes");
 const client = require("./database/core");
 const cookieParser = require("cookie-parser");
 const { default: mongoose } = require("mongoose");
+const cors = require("cors");
 
 const app = express();
-const port = 5000;
-const host = "localhost";
+const port = process.env.LOCAL_PORT;
+const host = process.env.LOCAL_HOST;
+
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
 app.use(express.json());
 app.use(cookieParser());
