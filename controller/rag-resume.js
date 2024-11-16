@@ -1,157 +1,115 @@
+const client = require("../database/core");
 const { MongoDBAtlasVectorSearch } = require("@langchain/mongodb");
 const { OpenAIEmbeddings, ChatOpenAI } = require("@langchain/openai");
-const { z } = require("zod");
-const { tool } = require("@langchain/core/tools");
-const { parseResumeToJson } = require("../core/core");
-const { ToolNode } = require("@langchain/langgraph/prebuilt");
 const {
-  ChatPromptTemplate,
-  MessagesPlaceholder,
-} = require("@langchain/core/prompts");
-const { HumanMessage, SystemMessage } = require("@langchain/core/messages");
-const { StateGraph, Annotation } = require("@langchain/langgraph");
-const { MongoDBSaver } = require("@langchain/langgraph-checkpoint-mongodb");
-const generateEmbedding = require("../core/ai/helper/embeddings");
+  RunnablePassthrough,
+  RunnableSequence,
+} = require("@langchain/core/runnables");
+const { StringOutputParser } = require("@langchain/core/output_parsers");
+const { ChatPromptTemplate } = require("@langchain/core/prompts");
+const {
+  HumanMessage,
+  AIMessage,
+  SystemMessage,
+} = require("@langchain/core/messages");
 const system_prompt = require("../core/ai/prompt/system_prompt");
-const { StructuredOutputParser } = require("langchain/output_parsers");
+const { parseResumeToJson } = require("../core/core");
+const formatConvHistory = require("../core/ai/helper/formatConversationHistory");
 
-const callAgent = async (client, query, parsedData, thread_id) => {
+let result;
+let resumeData;
+const chat_history = [];
+
+const getSemesterPlan = async (query) => {
   const dbName = "courses";
   const db = client.db(dbName);
   const collection = db.collection("all");
 
-  const CourseSchema = z.object({
-    courseName: z.string().describe("Full name of the course"),
-    courseNumber: z.string().describe("Course number"),
-    courseDescription: z
-      .string()
-      .describe("Fully detailed description of the course being picked."),
-    reasoning: z
-      .string()
-      .describe(
-        "Fully Detailed reasoning as to why the course was picked and how it aligns with the users resume, what data in the users resume made you feel this was a right choice. Be very particular and highlight the exact points in the resume that made you think this course is a good fit for the user. Also point and mention the experiences or projects that helped you pick this course."
-      ),
-    credits: z.number().describe("Total credits for the picked course"),
-    prerequisites: z
-      .string()
-      .describe("Detailed information about the course prerequisites if any"),
-    corequisites: z
-      .string()
-      .describe("Detailed information about the course corequisites if any"),
-  });
-
-  const SemesterSchema = z.array(CourseSchema);
-
-  const CoursePlanSchema = z.object({
-    semester_1: SemesterSchema,
-    semester_2: SemesterSchema,
-    semester_3: SemesterSchema,
-    semester_4: SemesterSchema,
-  });
-
-  const outputParser = StructuredOutputParser.fromZodSchema(CoursePlanSchema);
-
-  const GraphState = Annotation.Root({
-    messages: Annotation({
-      reducer: (x, y) => x.concat(y),
-    }),
-  });
-
-  const courseLookupTool = tool(
-    async ({ query, n }) => {
-      console.log("course lookup tool was called");
-
-      const dbConfig = {
-        collection: collection,
-        indexName: "vector_index",
-        textKey: "embedding_text",
-        embeddingKey: "embedding",
-      };
-
-      const embeddings = new OpenAIEmbeddings({
-        openAIApiKey: process.env.OPEN_API_TOKEN,
-      });
-
-      const vectorStore = new MongoDBAtlasVectorSearch(embeddings, dbConfig);
-      const queryEmbedding = await generateEmbedding(query);
-      const result = await vectorStore.similaritySearchVectorWithScore(
-        queryEmbedding,
-        n
-      );
-      return JSON.stringify(result);
-    },
-    {
-      name: "course_lookup",
-      description:
-        "Gathers course related information for a user's resume based on the parsed JSON data.",
-      schema: z.object({
-        query: z
-          .string()
-          .describe(
-            "The search query, the search query will have the courses from which the user would like the subjects to be picked from."
-          ),
-        n: z.number().describe("Number of results to return"),
-      }),
-    }
-  );
-
-  const tools = [courseLookupTool];
-  const toolNode = new ToolNode(tools);
-
-  const model = new ChatOpenAI({
-    apiKey: process.env.OPEN_API_TOKEN,
-    model: "gpt-4o-mini",
-    temperature: 0,
-  }).bindTools(tools);
-
-  async function callModel(state) {
-    const prompt = ChatPromptTemplate.fromMessages([
-      ["system", system_prompt],
-      new MessagesPlaceholder("messages"),
-    ]);
-
-    const formattedPrompt = await prompt.formatMessages({
-      resume_data: parsedData,
-      time: new Date().toISOString(),
-      tool_names: tools.map((tool) => tool.name).join(","),
-      messages: state.messages,
-      format_instructions: outputParser.getFormatInstructions(),
-      courses: query,
+  try {
+    const llm = new ChatOpenAI({
+      apiKey: process.env.OPEN_API_TOKEN,
+      model: "gpt-4o-mini",
+      temperature: 0,
     });
 
-    const result = await model.invoke(formattedPrompt);
+    const embeddings = new OpenAIEmbeddings({
+      apiKey: process.env.OPEN_API_TOKEN,
+    });
 
-    return { messages: [result] };
-  }
+    const dbConfig = {
+      collection: collection,
+      indexName: "vector_index",
+      textKey: "embedding_text",
+      embeddingKey: "embedding",
+    };
 
-  function shouldContinue(state) {
-    const messages = state.messages;
-    const lastMessage = messages[messages.length - 1];
-    if (lastMessage.tool_calls?.length) {
-      return "tools";
+    const vectorStore = new MongoDBAtlasVectorSearch(embeddings, dbConfig);
+
+    const retriever = vectorStore.asRetriever();
+
+    const standAloneQuestionTemplate = `Given some conversation history (if any) and a question, convert it to a standalone question.
+    conversation history: {conv_history}
+    question: {question}
+    standalone question:`;
+
+    const standAloneQuestionPrompt = ChatPromptTemplate.fromTemplate(
+      standAloneQuestionTemplate
+    );
+
+    const answerTemplate = `You are a helpful course assistant for northeastern university graduate courses, that will look through the provided questions related to the course recommendation, and based on the context provided and the conversation history. Try to find answer in the context, If the answer is not given in the context, find the answer in conversation history if possible. If you really do not know the answer, say "I'm sorry, i don't know the answer to that." Don't try to make up answers always try to be helpful and speak as if you were chatting to a friend.
+
+    context: {context}
+    conversation history: {conv_history}
+    question: {question}
+    answer: 
+    `;
+
+    const answerPrompt = ChatPromptTemplate.fromTemplate(answerTemplate);
+
+    function combineDocuments(docs) {
+      return docs.map((doc) => doc.pageContent).join("\n\n");
     }
-    return "__end__";
+
+    const standAloneQuestionChain = standAloneQuestionPrompt
+      .pipe(llm)
+      .pipe(new StringOutputParser());
+
+    const retrieverChain = RunnableSequence.from([
+      (prevResult) => prevResult.standalone_question,
+      retriever,
+      combineDocuments,
+    ]);
+
+    const answerChain = answerPrompt.pipe(llm).pipe(new StringOutputParser());
+
+    const chain = RunnableSequence.from([
+      {
+        standalone_question: standAloneQuestionChain,
+        original_input: new RunnablePassthrough(),
+      },
+      {
+        context: retrieverChain,
+        question: ({ original_input }) => original_input.question,
+        conv_history: ({ original_input }) => original_input.conv_history,
+      },
+      answerChain,
+    ]);
+
+    result = await chain.invoke({
+      question: query,
+      conv_history: chat_history,
+      resume_data: resumeData,
+      system_template: system_prompt,
+    });
+
+    chat_history.push(new HumanMessage(query));
+    chat_history.push(new AIMessage(result));
+  } catch (error) {
+    console.log(error);
+    result = error;
   }
 
-  const workflow = new StateGraph(GraphState)
-    .addNode("agent", callModel)
-    .addNode("tools", toolNode)
-    .addEdge("__start__", "agent")
-    .addConditionalEdges("agent", shouldContinue)
-    .addEdge("tools", "agent");
-
-  const checkpoint = new MongoDBSaver({ client, dbName });
-
-  const app = workflow.compile({ checkpoint });
-
-  const finalState = await app.invoke(
-    {
-      messages: [new HumanMessage(query)],
-    },
-    { recursionLimit: 15, configurable: { thread_id: thread_id } }
-  );
-
-  return finalState.messages[finalState.messages.length - 1].content;
+  return result;
 };
 
-module.exports = callAgent;
+module.exports = getSemesterPlan;

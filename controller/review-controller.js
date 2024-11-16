@@ -1,16 +1,10 @@
 const { parseResumeToJson, resumeReviewClient } = require("../core/core");
 const scrapeCourses = require("./course-controller");
 
-const resumeReviewController = async (req, res) => {
-  const collegeName = req.query.collegeName;
-  const courseName = req.query.courseName;
-
+const resumeViewController = async (req, res) => {
   try {
-    const courses = await scrapeCourses(courseName, collegeName);
     const parsedData = await parseResumeToJson("./nisu.pdf");
-
     res.send({
-      courses,
       resume: parsedData,
     });
   } catch (error) {
@@ -18,4 +12,4 @@ const resumeReviewController = async (req, res) => {
   }
 };
 
-module.exports = resumeReviewController;
+module.exports = resumeViewController;

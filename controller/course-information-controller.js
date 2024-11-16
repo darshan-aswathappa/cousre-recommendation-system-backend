@@ -1,18 +1,14 @@
 const client = require("../database/core");
-const { getProfessorInd } = require("../controller/professor-controller");
 const { MongoDBAtlasVectorSearch } = require("@langchain/mongodb");
 const { OpenAIEmbeddings, ChatOpenAI } = require("@langchain/openai");
 const { z } = require("zod");
-const { tool } = require("@langchain/core/tools");
-const { parseResumeToJson } = require("../core/core");
 const {
   RunnablePassthrough,
   RunnableSequence,
 } = require("@langchain/core/runnables");
 const { ChatPromptTemplate } = require("@langchain/core/prompts");
-const { log } = require("winston");
 const { StringOutputParser } = require("@langchain/core/output_parsers");
-const formatConvHistory = require("../core/ai/helper/formatConversationHistory");
+const { HumanMessage, AIMessage } = require("@langchain/core/messages");
 
 const courseInformationController = async (req, res) => {
   const llmResponse = await courseInformation(req.body.message);
@@ -99,11 +95,11 @@ const courseInformation = async (query) => {
 
     result = await chain.invoke({
       question: query,
-      conv_history: formatConvHistory(chat_history),
+      conv_history: chat_history,
     });
 
-    chat_history.push(query);
-    chat_history.push(result);
+    chat_history.push(new HumanMessage(query));
+    chat_history.push(new AIMessage(result));
   } catch (error) {
     result = error;
   }
