@@ -21,6 +21,7 @@ const {
   checkAuth,
 } = require("../controller/auth/auth-controller");
 const verifyToken = require("../middleware/verifyToken");
+const getCourseRecommendationById = require("../controller/courses/fetchRecommendationById");
 
 const router = express.Router();
 
@@ -43,5 +44,5 @@ router.post("/spring2025", scrapeSpringCourses);
 router.post("/course-information", courseInformationController);
 router.get("/prof-scraper", scrapeProfessorController);
 router.get("/get-subjects", getAllNeuCourses);
-
+router.get("/fetch-courses-recommendation/:id", getCourseRecommendationById);
 module.exports = router;

@@ -2,26 +2,21 @@ const callFetchAgent = require("./callFetchAgentController");
 const { parseResumeToJson } = require("../../core/core");
 const system_prompt = require("../../core/ai/prompt/system_prompt");
 const client = require("../../database/core");
+const testData = require("../../asset/dummy_data.json");
 
 const fetchResumeMatchController = async (req, res) => {
   const initialMessage = req.body.message;
-  const thread = req.query.threadId;
-  const threadId = Date.now().toString();
-
-  const message = `
-  courses: ${initialMessage} 
-  system template with data and rules: ${system_prompt}`;
-
+  let response;
   try {
-    const resumeData = await parseResumeToJson("./darshan.pdf");
-    const response = await callFetchAgent(client, message, resumeData, thread);
-    const serialized_response = response
-      .replace("```json", "")
-      .replace("```", "");
-    res.json({
-      threadId,
-      res: JSON.parse(serialized_response),
-    });
+    if (process.env.NODE_ENV == "production") {
+      const resumeData = await parseResumeToJson("./darshan.pdf");
+      response = await callFetchAgent(client, initialMessage, resumeData);
+    }
+    response = testData;
+    console.log("Displaying mock data.");
+    setTimeout(() => {
+      res.send(response);
+    }, 5000);
   } catch (error) {
     console.error("Error starting conversation:", error);
     res.status(500).json({ error: "Internal server error" });
