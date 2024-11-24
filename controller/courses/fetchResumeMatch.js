@@ -3,20 +3,36 @@ const { parseResumeToJson } = require("../../core/core");
 const system_prompt = require("../../core/ai/prompt/system_prompt");
 const client = require("../../database/core");
 const testData = require("../../asset/dummy_data.json");
+const User = require("../../database/model/user.model");
+const { ObjectId } = require("mongodb");
 
 const fetchResumeMatchController = async (req, res) => {
   const initialMessage = req.body.message;
-  let response;
+  const userId = req.body.userId;
   try {
+    const user = await User.findOne({ _id: new ObjectId(userId) });
+    let prodResponse;
     if (process.env.NODE_ENV == "production") {
-      const resumeData = await parseResumeToJson("./darshan.pdf");
-      response = await callFetchAgent(client, initialMessage, resumeData);
+      if (user.resumeData === null) {
+        console.log("Building resume recommendation");
+        const resumeData = await parseResumeToJson("./darshan.pdf");
+        prodResponse = await callFetchAgent(client, initialMessage, resumeData);
+        user.resumeData = prodResponse;
+        await user.save();
+        console.log("Saved Resume data");
+      } else {
+        console.log("Resume recommendation already exists");
+        prodResponse = user.resumeData;
+      }
+      console.log("Displaying production data.");
+      res.send(prodResponse);
+    } else {
+      const devResponse = testData;
+      console.log("Displaying mock data.");
+      setTimeout(() => {
+        res.send(devResponse);
+      }, 5000);
     }
-    response = testData;
-    console.log("Displaying mock data.");
-    setTimeout(() => {
-      res.send(response);
-    }, 5000);
   } catch (error) {
     console.error("Error starting conversation:", error);
     res.status(500).json({ error: "Internal server error" });
