@@ -44,5 +44,8 @@ router.post("/spring2025", scrapeSpringCourses);
 router.post("/course-information", courseInformationController);
 router.get("/prof-scraper", scrapeProfessorController);
 router.get("/get-subjects", getAllNeuCourses);
-router.get("/fetch-courses-recommendation/:id", getCourseRecommendationById);
+router.get(
+  "/fetch-courses-recommendation/:userId/:resumeDataId",
+  getCourseRecommendationById
+);
 module.exports = router;
