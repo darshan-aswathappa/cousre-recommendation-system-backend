@@ -22,7 +22,10 @@ const {
 } = require("../controller/auth/auth-controller");
 const verifyToken = require("../middleware/verifyToken");
 const getCourseRecommendationById = require("../controller/courses/fetchRecommendationById");
+const multer = require("multer");
+const uploadParseResumeController = require("../controller/upload-resume-controller");
 
+const upload = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
 
 // add to resend the verification codes later on
@@ -47,5 +50,10 @@ router.get("/get-subjects", getAllNeuCourses);
 router.get(
   "/fetch-courses-recommendation/:userId/:resumeDataId",
   getCourseRecommendationById
+);
+router.post(
+  "/upload-parse-resume/:userId",
+  upload.single("resume"),
+  uploadParseResumeController
 );
 module.exports = router;

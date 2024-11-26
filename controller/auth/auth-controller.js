@@ -38,6 +38,7 @@ const signup = async (req, res) => {
       verificationToken,
       verificationTokenExpiresAt: Date.now() + 24 * 60 * 60 * 1000,
       resumeData: null,
+      userResumeParsedDetails: null,
     });
 
     await user.save();

@@ -1,6 +1,5 @@
 const callFetchAgent = require("./callFetchAgentController");
 const { parseResumeToJson } = require("../../core/core");
-const system_prompt = require("../../core/ai/prompt/system_prompt");
 const client = require("../../database/core");
 const testData = require("../../asset/dummy_data.json");
 const User = require("../../database/model/user.model");
@@ -13,10 +12,17 @@ const fetchResumeMatchController = async (req, res) => {
     const user = await User.findOne({ _id: new ObjectId(userId) });
     let prodResponse;
     if (process.env.NODE_ENV == "production") {
-      if (user.resumeData === null) {
+      if (
+        user.resumeData === null &&
+        user.userResumeParsedDetails != null &&
+        initialMessage != ""
+      ) {
         console.log("Building resume recommendation");
-        const resumeData = await parseResumeToJson("./darshan.pdf");
-        prodResponse = await callFetchAgent(client, initialMessage, resumeData);
+        prodResponse = await callFetchAgent(
+          client,
+          initialMessage,
+          user.userResumeParsedDetails
+        );
         user.resumeData = prodResponse;
         await user.save();
         console.log("Saved Resume data");

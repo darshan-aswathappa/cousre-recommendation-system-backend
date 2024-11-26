@@ -276,7 +276,7 @@ const processBatch = async (client, courses, parsedData) => {
 
 const callFetchAgent = async (client, query, parsedData) => {
   const courseNames = query.split(",").map((course) => course.trim());
-  const batchSize = 5; // Adjust the size based on your token limits
+  const batchSize = 5;
 
   const courseBatches = [];
 

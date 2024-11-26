@@ -29,7 +29,11 @@ const UserSchema = mongoose.Schema(
     verificationTokenExpiresAt: Date,
     resumeData: {
       type: Object,
-      default: {},
+      default: null,
+    },
+    userResumeParsedDetails: {
+      type: Object,
+      default: null,
     },
   },
   {
