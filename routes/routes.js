@@ -40,7 +40,7 @@ router.post("/api/auth/reset-password/:token", resetPassword);
 router.get("/professors", getProfessors);
 router.get("/professor", getProfessorIndDetails);
 router.post("/save-courses", saveCoursesController);
-router.get("/resume-view", resumeViewController);
+router.get("/resume-view/:userId", resumeViewController);
 router.post("/subject-bot", callAgentController);
 router.post("/fetch-courses-recommendation", fetchResumeMatchController);
 router.post("/spring2025", scrapeSpringCourses);
