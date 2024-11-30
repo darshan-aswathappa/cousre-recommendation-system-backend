@@ -24,6 +24,7 @@ const fetchResumeMatchController = async (req, res) => {
           user.userResumeParsedDetails
         );
         user.resumeData = prodResponse;
+        user.selectedCourses = initialMessage;
         await user.save();
         console.log("Saved Resume data");
       } else {

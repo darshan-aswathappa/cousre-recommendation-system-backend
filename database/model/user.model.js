@@ -35,6 +35,14 @@ const UserSchema = mongoose.Schema(
       type: Object,
       default: null,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    selectedCourses: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,

@@ -2,7 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const storeCourseInCollection = require("../../database/helpers/course");
 
-const subjectCodes = ["CSYE", "TELE", "DAMG", "INFO", "DS"];
+const subjectCodes = ["ABRU"];
 
 const saveCoursesController = async (req, res) => {
   try {

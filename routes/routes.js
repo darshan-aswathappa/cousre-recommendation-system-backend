@@ -19,11 +19,13 @@ const {
   forgotPassword,
   resetPassword,
   checkAuth,
+  getUser,
 } = require("../controller/auth/auth-controller");
 const verifyToken = require("../middleware/verifyToken");
 const getCourseRecommendationById = require("../controller/courses/fetchRecommendationById");
 const multer = require("multer");
 const uploadParseResumeController = require("../controller/upload-resume-controller");
+const deleteResumeDataController = require("../controller/delete-resume-data-controller");
 
 const upload = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
@@ -36,6 +38,8 @@ router.post("/api/auth/logout", logout);
 router.post("/api/auth/verify-email", verifyEmail);
 router.post("/api/auth/forgot-password", forgotPassword);
 router.post("/api/auth/reset-password/:token", resetPassword);
+router.put("/reupload-resume/:userId", deleteResumeDataController);
+router.get("/api/auth/get-user/:userId", getUser);
 
 router.get("/professors", getProfessors);
 router.get("/professor", getProfessorIndDetails);
@@ -56,4 +60,5 @@ router.post(
   upload.single("resume"),
   uploadParseResumeController
 );
+
 module.exports = router;
