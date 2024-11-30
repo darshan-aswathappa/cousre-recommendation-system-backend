@@ -6,7 +6,7 @@ const { default: mongoose } = require("mongoose");
 const cors = require("cors");
 
 const app = express();
-const port = process.env.LOCAL_PORT;
+const port = process.env.LOCAL_PORT || 3000;
 const host = process.env.LOCAL_HOST;
 
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
