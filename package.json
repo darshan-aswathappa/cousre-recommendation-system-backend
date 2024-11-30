@@ -2,10 +2,9 @@
   "name": "web-project-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --env-file=.env index.js"
+    "start": "nodemon --env-file=.env app.js"
   },
   "author": "",
   "license": "ISC",
