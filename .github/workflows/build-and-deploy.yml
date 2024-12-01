@@ -58,4 +58,4 @@ jobs:
             docker pull $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
             # Deploy using docker-compose
             docker-compose down -v
-            docker-compose up -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+            docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
