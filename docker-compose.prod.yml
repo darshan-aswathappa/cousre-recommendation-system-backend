@@ -1,0 +1,13 @@
+services:
+  node-courses-web-backend:
+    build:
+      context: .
+      args:
+        - NODE_ENV=production
+    environment:
+      - NODE_ENV=production
+    command: node --env-file=.env app.js
+
+    nginx:
+      ports:
+        - "80:80"

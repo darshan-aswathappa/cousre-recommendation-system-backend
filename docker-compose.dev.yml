@@ -1,0 +1,17 @@
+services:
+  node-courses-web-backend:
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    volumes:
+      - ./:/app ro
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    command: npm run start
+
+  nginx:
+    ports:
+      - "3000:80"

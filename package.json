@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --env-file=.env app.js"
+    "start": "nodemon --env-file=.env app.js",
+    "build": "node app.js"
   },
   "author": "",
   "license": "ISC",

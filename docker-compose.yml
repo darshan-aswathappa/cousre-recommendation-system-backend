@@ -1,0 +1,17 @@
+services:
+  node-courses-web-backend:
+    build: .
+    environment:
+      - PORT=3000
+      - OPEN_API_TOKEN=sk-B_Bc628t70T8I4E1AqIsEzQkXcSwIBmKcVyycojOj3T3BlbkFJIsjTjnxtCGZgPJtG9a6S4BQylXZzVe2cuV3RrFOIwA
+      - PERPLEXITY_API=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
+      - ANTHROPIC_API_KEY=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
+      - JWT_SECRET=G.wCHohH6KDkSlG`,&L-,|Jr'4.'-o[NuD%.rHildfbD@1Ku'5,y9uohUWb'~0V
+      - MONGO_DB_URI=mongodb+srv://aswathappad:GT2ajak6riokXI6Z@cluster0-webdev.xsjxb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0-webdev
+
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - node-courses-web-backend

@@ -6,8 +6,7 @@ const { default: mongoose } = require("mongoose");
 const cors = require("cors");
 
 const app = express();
-const port = process.env.LOCAL_PORT || 3000;
-const host = process.env.LOCAL_HOST;
+const port = process.env.PORT || 3000;
 
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
@@ -15,14 +14,16 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/", router);
 
+app.enable("trust proxy");
+
 async function startServer() {
   try {
     await client.connect();
     const con = await mongoose.connect(process.env.MONGO_DB_URI);
     console.log(`MongoDB Connected: ${con.connection.host}`);
 
-    app.listen(port, host, () => {
-      console.log(`Server started listening at http://${host}:${port}`);
+    app.listen(port, () => {
+      console.log(`Server started listening at port: ${port}`);
     });
   } catch (error) {
     console.error("Failed to connect to MongoDB:", error);
