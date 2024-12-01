@@ -7,6 +7,8 @@ services:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - JWT_SECRET=${JWT_SECRET}
       - MONGO_DB_URI=${MONGO_DB_URI}
+    env_file:
+      - /root/.env
 
   nginx:
     image: nginx:stable-alpine
