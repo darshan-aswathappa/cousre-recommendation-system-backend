@@ -1,18 +1,15 @@
 services:
   node-courses-web-backend:
     build: .
+    image: sloppynetworks/node-app
     environment:
       - PORT=3000
       - OPEN_API_TOKEN=${OPEN_API_TOKEN}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - JWT_SECRET=${JWT_SECRET}
       - MONGO_DB_URI=${MONGO_DB_URI}
-    env_file:
-      - /root/.env
 
   nginx:
     image: nginx:stable-alpine
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - node-courses-web-backend
