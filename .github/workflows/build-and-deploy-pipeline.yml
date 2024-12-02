@@ -18,18 +18,13 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            rm -rf ~/webbackendapp
+
             mkdir -p ~/webbackendapp
 
             cd ~/webbackendapp
 
-            if [ -z "$(ls -A .)" ]; then
-              git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
-            else
-              git reset --hard
-              git pull origin main
-            fi
-
-            rm .env
+            git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
 
             echo "OPEN_API_TOKEN=${{ secrets.OPEN_API_TOKEN }}" >> .env
             echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> .env
