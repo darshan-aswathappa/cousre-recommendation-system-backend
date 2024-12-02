@@ -4,12 +4,14 @@ services:
     image: darshanaswath/webbackendapp:latest
     environment:
       - PORT=3000
-      - OPEN_API_TOKEN=$${{ secrets.OPEN_API_TOKEN }}
-      - ANTHROPIC_API_KEY=$${{ secrets.ANTHROPIC_API_KEY }}
-      - JWT_SECRET=$${{ secrets.JWT_SECRET }}
-      - MONGO_USERNAME=$${{ secrets.MONGO_USERNAME }}
-      - MONGO_PASSWORD=$${{ secrets.MONGO_PASSWORD }}
-      - CLIENT_URL=$${{ secrets.CLIENT_URL }}
+      - OPEN_API_TOKEN=${OPEN_API_TOKEN}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - CLIENT_URL=${CLIENT_URL}
+    env_file:
+      - .env
 
   nginx:
     image: nginx:stable-alpine
