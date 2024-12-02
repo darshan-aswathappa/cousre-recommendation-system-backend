@@ -47,7 +47,11 @@ jobs:
 
             docker compose down -v
 
-            rm -rf app
-            mkdir app
-            cd app/
-            git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
+            if [ ! -d "app" ]; then
+              mkdir app
+              cd app/
+              git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
+            else
+              cd app/
+              git pull origin main
+            fi
