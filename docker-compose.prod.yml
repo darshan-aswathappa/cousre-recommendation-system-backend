@@ -10,4 +10,4 @@ services:
         - NODE_ENV=production
     environment:
       - NODE_ENV=production
-    command: npm start
+    command: npm run build

@@ -8,7 +8,8 @@ jobs:
     name: build && push image to docker hub
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
           ref: main
       - name: setup docker buildx
@@ -18,11 +19,32 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: build and push api
-        id: build-push-api
+      - name: build and push docker image
+        id: build-push-docker-image
         uses: docker/build-push-action@v3
         with:
           context: .
           file: Dockerfile
           push: true
           tags: darshanaswath/webbackendapp:latest
+
+  deploy-to-droplet:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install SSH client
+        run: sudo apt-get install -y openssh-client
+
+      - name: SSH into Droplet, pull image, and run container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            docker pull darshanaswath/webbackendapp
+            docker stop server || true
+            docker rm server || true

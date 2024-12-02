@@ -1,12 +1,15 @@
 services:
   node-courses-web-backend:
     build: .
+    image: darshanaswath/webbackendapp:latest
     environment:
       - PORT=3000
       - OPEN_API_TOKEN=${OPEN_API_TOKEN}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - JWT_SECRET=${JWT_SECRET}
       - MONGO_DB_URI=${MONGO_DB_URI}
+    env_file:
+      - .env
 
   nginx:
     image: nginx:stable-alpine
