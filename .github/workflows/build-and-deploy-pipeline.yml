@@ -25,12 +25,8 @@ jobs:
             if [ -z "$(ls -A .)" ]; then
               git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
             else
-              if [ ! -d ".git" ]; then
-                echo "Directory is not a git repository."
-                exit 1
-              else
-                git pull origin main
-              fi
+              git reset --hard
+              git pull origin main
             fi
 
             rm .env
