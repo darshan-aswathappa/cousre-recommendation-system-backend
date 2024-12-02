@@ -4,6 +4,13 @@ services:
       - "80:80"
 
   node-courses-web-backend:
+    deploy:
+      replicas: 5
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 2
+        delay: 15s
     build:
       context: .
       args:
