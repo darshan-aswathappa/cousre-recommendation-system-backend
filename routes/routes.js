@@ -19,6 +19,7 @@ const {
   forgotPassword,
   resetPassword,
   checkAuth,
+  getAllUsers,
 } = require("../controller/auth/auth-controller");
 const verifyToken = require("../middleware/verifyToken");
 const getCourseRecommendationById = require("../controller/courses/fetchRecommendationById");
@@ -33,6 +34,7 @@ router.post("/api/auth/logout", logout);
 router.post("/api/auth/verify-email", verifyEmail);
 router.post("/api/auth/forgot-password", forgotPassword);
 router.post("/api/auth/reset-password/:token", resetPassword);
+router.get("/api/auth/getAllUsers", getAllUsers);
 
 router.get("/professors", getProfessors);
 router.get("/professor", getProfessorIndDetails);

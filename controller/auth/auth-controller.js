@@ -219,6 +219,19 @@ const checkAuth = async (req, res) => {
   }
 };
 
+const getAllUsers = async(req, res) => {
+  try {
+    const users = await User.find().select("-password -resumeData -userResumeParsedDetails");
+    res.status(200).json({
+      success: true,
+      users,
+    });
+  } catch (error) {
+    console.log("Error in getAllUsers", error);
+    res.status(400).json({success:false, message:error.message});
+  }
+};
+
 module.exports = {
   login,
   signup,
@@ -227,4 +240,5 @@ module.exports = {
   resetPassword,
   verifyEmail,
   checkAuth,
+  getAllUsers,
 };
