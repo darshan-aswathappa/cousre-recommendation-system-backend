@@ -2,6 +2,8 @@ services:
   nginx:
     ports:
       - "80:80"
+    depends_on:
+      - node-courses-web-backend
 
   node-courses-web-backend:
     image: darshanaswath/webbackendapp:latest

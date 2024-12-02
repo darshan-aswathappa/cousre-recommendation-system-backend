@@ -16,9 +16,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Build Docker Image
+        run: docker compose -f docker-compose.yml -f docker-compose.prod.yml build
+
       - name: Build and Push Docker Image
         run: |
-          docker compose -f docker-compose.yml -f docker-compose.prod.yml push
+          docker compose -f docker-compose.yml -f docker-compose.prod.yml push darshanaswath/webbackendapp:latest
 
   deploy-to-droplet:
     runs-on: ubuntu-latest
