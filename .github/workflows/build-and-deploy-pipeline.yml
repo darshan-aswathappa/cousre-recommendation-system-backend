@@ -37,13 +37,27 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            echo "NODE_ENV=production" >> .env
-            echo "OPEN_API_TOKEN=${{ secrets.OPEN_API_TOKEN }}" >> .env
-            echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> .env
-            echo "MONGO_USERNAME=${{ secrets.MONGO_USERNAME }}" >> .env
-            echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
-            echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
-            echo "CLIENT_URL=${{ secrets.CLIENT_URL }}" >> .env
+            if ! grep -q "NODE_ENV=production" .env; then
+              echo "NODE_ENV=production" >> .env
+            fi
+            if ! grep -q "OPEN_API_TOKEN=${{ secrets.OPEN_API_TOKEN }}" .env; then
+              echo "OPEN_API_TOKEN=${{ secrets.OPEN_API_TOKEN }}" >> .env
+            fi
+            if ! grep -q "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" .env; then
+              echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> .env
+            fi
+            if ! grep -q "MONGO_USERNAME=${{ secrets.MONGO_USERNAME }}" .env; then
+              echo "MONGO_USERNAME=${{ secrets.MONGO_USERNAME }}" >> .env
+            fi
+            if ! grep -q "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" .env; then
+              echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
+            fi
+            if ! grep -q "JWT_SECRET=${{ secrets.JWT_SECRET }}" .env; then
+              echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
+            fi
+            if ! grep -q "CLIENT_URL=${{ secrets.CLIENT_URL }}" .env; then
+              echo "CLIENT_URL=${{ secrets.CLIENT_URL }}" >> .env
+            fi
 
             docker compose down -v
 
