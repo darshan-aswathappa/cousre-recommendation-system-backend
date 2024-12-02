@@ -24,12 +24,10 @@ jobs:
 
             rm .env
 
-            cat <<'EOF' > .env
-            OPEN_API_TOKEN=${{ secrets.OPEN_API_TOKEN }}
-            ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}
-            JWT_SECRET=${{ secrets.JWT_SECRET }}
-            MONGO_DB_URI=${{ secrets.MONGO_DB_URI }}
-            EOF
+            echo "OPEN_API_TOKEN=${{ secrets.OPEN_API_TOKEN }}" >> .env
+            echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> .env
+            echo "MONGO_DB_URI=${{ secrets.MONGO_DB_URI }}" >> .env
+            echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
 
             if [ ! -d ".git" ]; then
               git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
