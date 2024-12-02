@@ -68,10 +68,8 @@ jobs:
               git pull origin main
             fi
 
-            cd
-
-            echo "printing .env"
-            cat .env
+            echo "restarting the server"
+            sudo reboot
 
             cd app/
 
