@@ -38,6 +38,8 @@ jobs:
 
             docker compose down -v
 
+            docker swarm leave
+
             docker swarm init --advertise-addr 64.225.28.58
 
             docker stack deploy -c docker-compose.yml -c docker-compose.prod.yml neucrapp
