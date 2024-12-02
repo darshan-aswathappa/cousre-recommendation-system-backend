@@ -32,7 +32,12 @@ jobs:
             echo "CLIENT_URL=${{ secrets.CLIENT_URL }}" >> .env
 
             if [ ! -d ".git" ]; then
-              git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
+              if [ -z "$(ls -A .)" ]; then
+                git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
+              else
+                echo "Directory is not empty. Cannot clone repository."
+                exit 1
+              fi
             else
               git reset --hard
               git pull origin main
