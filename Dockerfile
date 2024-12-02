@@ -1,5 +1,5 @@
 FROM node:20
-WORKDIR /app
+WORKDIR /src
 COPY package.json .
 
 ARG NODE_ENV
