@@ -1,7 +1,6 @@
 services:
   node-courses-web-backend:
     build: .
-    image: sloppynetworks/node-app
     environment:
       - PORT=3000
       - OPEN_API_TOKEN=${OPEN_API_TOKEN}

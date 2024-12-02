@@ -17,4 +17,4 @@ services:
         - NODE_ENV=production
     environment:
       - NODE_ENV=production
-    command: node app.js
+    command: npm start
