@@ -1,0 +1,24 @@
+services:
+  node-courses-web-backend:
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    volumes:
+      - ./:/app ro
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - OPEN_API_TOKEN=${OPEN_API_TOKEN}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - CLIENT_URL=${CLIENT_URL}
+    env_file:
+      - .env
+    command: npm run start
+
+  nginx:
+    ports:
+      - "3000:80"

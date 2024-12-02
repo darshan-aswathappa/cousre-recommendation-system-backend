@@ -1,0 +1,23 @@
+services:
+  nginx:
+    ports:
+      - "80:80"
+    depends_on:
+      - node-courses-web-backend
+
+  node-courses-web-backend:
+    image: darshanaswath/webbackendapp:latest
+    deploy:
+      replicas: 5
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 2
+        delay: 15s
+    build:
+      context: .
+      args:
+        - NODE_ENV=production
+    environment:
+      - NODE_ENV=production
+    command: node app.js

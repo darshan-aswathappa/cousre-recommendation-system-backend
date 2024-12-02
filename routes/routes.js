@@ -20,10 +20,15 @@ const {
   resetPassword,
   checkAuth,
   getAllUsers,
+  getUser,
 } = require("../controller/auth/auth-controller");
 const verifyToken = require("../middleware/verifyToken");
 const getCourseRecommendationById = require("../controller/courses/fetchRecommendationById");
+const multer = require("multer");
+const uploadParseResumeController = require("../controller/upload-resume-controller");
+const deleteResumeDataController = require("../controller/delete-resume-data-controller");
 
+const upload = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
 
 // add to resend the verification codes later on
@@ -35,11 +40,13 @@ router.post("/api/auth/verify-email", verifyEmail);
 router.post("/api/auth/forgot-password", forgotPassword);
 router.post("/api/auth/reset-password/:token", resetPassword);
 router.get("/api/auth/getAllUsers", getAllUsers);
+router.put("/reupload-resume/:userId", deleteResumeDataController);
+router.get("/api/auth/get-user/:userId", getUser);
 
 router.get("/professors", getProfessors);
 router.get("/professor", getProfessorIndDetails);
 router.post("/save-courses", saveCoursesController);
-router.get("/resume-view", resumeViewController);
+router.get("/resume-view/:userId", resumeViewController);
 router.post("/subject-bot", callAgentController);
 router.post("/fetch-courses-recommendation", fetchResumeMatchController);
 router.post("/spring2025", scrapeSpringCourses);
@@ -50,4 +57,10 @@ router.get(
   "/fetch-courses-recommendation/:userId/:resumeDataId",
   getCourseRecommendationById
 );
+router.post(
+  "/upload-parse-resume/:userId",
+  upload.single("resume"),
+  uploadParseResumeController
+);
+
 module.exports = router;

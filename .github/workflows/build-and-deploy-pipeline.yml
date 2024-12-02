@@ -1,0 +1,88 @@
+name: deploypipeline
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build Docker Image
+        run: docker compose -f docker-compose.yml -f docker-compose.prod.yml build
+
+      - name: Build and Push Docker Image
+        run: docker compose -f docker-compose.yml -f docker-compose.prod.yml push
+
+  deploy-to-droplet:
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    steps:
+      - name: Install SSH client
+        run: sudo apt-get install -y openssh-client
+
+      - name: SSH into Droplet, clone repo, and build using Compose
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          script: |
+            if ! grep -q "NODE_ENV=production" .env; then
+              echo "NODE_ENV=production" >> .env
+            fi
+            if ! grep -q "OPEN_API_TOKEN=${{ secrets.OPEN_API_TOKEN }}" .env; then
+              echo "OPEN_API_TOKEN=${{ secrets.OPEN_API_TOKEN }}" >> .env
+            fi
+            if ! grep -q "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" .env; then
+              echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> .env
+            fi
+            if ! grep -q "MONGO_USERNAME=${{ secrets.MONGO_USERNAME }}" .env; then
+              echo "MONGO_USERNAME=${{ secrets.MONGO_USERNAME }}" >> .env
+            fi
+            if ! grep -q "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" .env; then
+              echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
+            fi
+            if ! grep -q "JWT_SECRET=${{ secrets.JWT_SECRET }}" .env; then
+              echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
+            fi
+            if ! grep -q "CLIENT_URL=${{ secrets.CLIENT_URL }}" .env; then
+              echo "CLIENT_URL=${{ secrets.CLIENT_URL }}" >> .env
+            fi
+
+            if [ ! -d "app" ]; then
+              mkdir app
+              cd app/
+              git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
+            else
+              cd app/
+              git pull origin main
+            fi
+
+            cd
+
+            echo "printing .env"
+            cat .env
+
+            echo "exporting all .env secrets"
+            export $(grep -v '^#' .env | xargs)
+
+            cd app/
+
+            echo "tearing down containers"
+            docker compose down -v
+
+            echo "pulling latest build"
+            docker compose -f docker-compose.yml -f docker-compose.prod.yml pull
+
+            echo "deploying latest build"
+            docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d

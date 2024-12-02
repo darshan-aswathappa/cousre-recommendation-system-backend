@@ -8,6 +8,7 @@ const {
   sendResetSuccessEmail,
   sendPasswordResetEmail,
 } = require("../../mailtrap/emails");
+const { ObjectId } = require("mongodb");
 
 const signup = async (req, res) => {
   const { email, password, name } = req.body;
@@ -38,6 +39,8 @@ const signup = async (req, res) => {
       verificationToken,
       verificationTokenExpiresAt: Date.now() + 24 * 60 * 60 * 1000,
       resumeData: null,
+      userResumeParsedDetails: null,
+      isAdmin: false,
     });
 
     await user.save();
@@ -230,6 +233,25 @@ const getAllUsers = async(req, res) => {
     console.log("Error in getAllUsers", error);
     res.status(400).json({success:false, message:error.message});
   }
+}
+
+const getUser = async (req, res) => {
+  const id = req.params.userId;
+  try {
+    const user = await User.findById({ _id: new ObjectId(id) }).select(
+      "-password"
+    );
+    if (!user) {
+      return res
+        .status(400)
+        .json({ success: false, message: "User not found" });
+    }
+
+    res.status(200).json({ success: true, user });
+  } catch (error) {
+    console.log("Error in getUser ", error);
+    res.status(400).json({ success: false, message: error.message });
+  }
 };
 
 module.exports = {
@@ -241,4 +263,5 @@ module.exports = {
   verifyEmail,
   checkAuth,
   getAllUsers,
+  getUser,
 };

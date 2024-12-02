@@ -1,0 +1,19 @@
+services:
+  node-courses-web-backend:
+    build: .
+    image: darshanaswath/webbackendapp:latest
+    environment:
+      - PORT=3000
+      - OPEN_API_TOKEN=${OPEN_API_TOKEN}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - CLIENT_URL=${CLIENT_URL}
+
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - node-courses-web-backend

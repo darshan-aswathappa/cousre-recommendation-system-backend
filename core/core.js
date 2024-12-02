@@ -39,10 +39,9 @@ const resumeJsonResponse = z.object({
     ) || null,
 });
 
-const parseResumeToJson = async (resumePath) => {
+const parseResumeToJson = async (dataBuffer) => {
   console.log("called resume parser");
   try {
-    const dataBuffer = fs.readFileSync(resumePath);
     const pdfData = await pdfParse(dataBuffer);
     const responseData = await passTextToOpenAI(pdfData.text);
     const jsonData = JSON.parse(responseData);

@@ -9,6 +9,7 @@ const {
 const { ChatPromptTemplate } = require("@langchain/core/prompts");
 const { StringOutputParser } = require("@langchain/core/output_parsers");
 const { HumanMessage, AIMessage } = require("@langchain/core/messages");
+const { ChatAnthropic } = require("@langchain/anthropic");
 
 const courseInformationController = async (req, res) => {
   const llmResponse = await courseInformation(req.body.message);
@@ -25,9 +26,9 @@ const courseInformation = async (query) => {
   let result;
 
   try {
-    const llm = new ChatOpenAI({
-      apiKey: process.env.OPEN_API_TOKEN,
-      model: "gpt-4o-mini",
+    const llm = new ChatAnthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+      model: "claude-3-5-sonnet-20240620",
       temperature: 0,
     });
 
