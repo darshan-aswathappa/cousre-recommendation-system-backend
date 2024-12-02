@@ -19,7 +19,9 @@ app.enable("trust proxy");
 async function startServer() {
   try {
     await client.connect();
-    const con = await mongoose.connect(process.env.MONGO_DB_URI);
+    const con = await mongoose.connect(
+      `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0-webdev.xsjxb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0-webdev`
+    );
     console.log(`MongoDB Connected: ${con.connection.host}`);
 
     app.listen(port, () => {

@@ -26,7 +26,8 @@ jobs:
 
             echo "OPEN_API_TOKEN=${{ secrets.OPEN_API_TOKEN }}" >> .env
             echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> .env
-            echo "MONGO_DB_URI=${{ secrets.MONGO_DB_URI }}" >> .env
+            echo "MONGO_USERNAME=${{ secrets.MONGO_USERNAME }}" >> .env
+            echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
             echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
 
             if [ ! -d ".git" ]; then
@@ -38,7 +39,7 @@ jobs:
 
             docker compose down -v
 
-            docker swarm leave
+            docker swarm leave --force
 
             docker swarm init --advertise-addr 64.225.28.58
 
