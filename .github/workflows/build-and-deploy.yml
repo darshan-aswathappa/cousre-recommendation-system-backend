@@ -3,9 +3,6 @@ name: backend-digital-ocean
 on:
   push:
     branches: [main]
-    paths:
-      - docker-compose.prod.yml
-      - Dockerfile
 
   workflow_dispatch:
     inputs:
