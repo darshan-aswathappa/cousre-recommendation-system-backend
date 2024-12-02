@@ -4,6 +4,7 @@ services:
       - "80:80"
 
   node-courses-web-backend:
+    image: darshanaswath/webbackendapp:prod
     deploy:
       replicas: 5
       restart_policy:
