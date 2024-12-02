@@ -4,7 +4,7 @@ on:
     branches:
       - "main"
 jobs:
-  deploy:
+  build-and-push:
     name: build && push image to docker hub
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +27,6 @@ jobs:
           file: Dockerfile
           push: true
           tags: darshanaswath/webbackendapp:latest
-
   deploy-to-droplet:
     needs: build-and-push
     runs-on: ubuntu-latest
