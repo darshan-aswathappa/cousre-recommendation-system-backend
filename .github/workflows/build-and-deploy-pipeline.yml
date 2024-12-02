@@ -39,10 +39,16 @@ jobs:
             fi
 
             docker compose down -v
-            docker stop $(docker ps -aq)
-            docker rm $(docker ps -aq)
-            docker rmi -f $(docker images -q)
-            docker volume rm $(docker volume ls -q)
+            if [ "$(docker ps -q)" ]; then
+              docker stop $(docker ps -aq)
+              docker rm $(docker ps -aq)
+            fi
+            if [ "$(docker images -q)" ]; then
+              docker rmi -f $(docker images -q)
+            fi
+            if [ "$(docker volume ls -q)" ]; then
+              docker volume rm $(docker volume ls -q)
+            fi
             docker builder prune -a --force
 
             docker swarm leave --force
