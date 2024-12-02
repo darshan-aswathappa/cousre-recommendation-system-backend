@@ -18,7 +18,6 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            rm -rf webbackendapp/ 
             mkdir -p ~/webbackendapp
 
             cd ~/webbackendapp
