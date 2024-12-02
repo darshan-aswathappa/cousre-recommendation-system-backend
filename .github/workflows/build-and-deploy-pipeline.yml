@@ -26,6 +26,8 @@ jobs:
 
             git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
 
+            npm install
+
             echo "OPEN_API_TOKEN=${{ secrets.OPEN_API_TOKEN }}" >> .env
             echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> .env
             echo "MONGO_USERNAME=${{ secrets.MONGO_USERNAME }}" >> .env
@@ -44,16 +46,13 @@ jobs:
             if [ "$(docker volume ls -q)" ];then
               docker volume rm $(docker volume ls -q)
             fi
+
             docker builder prune -a --force
 
             docker swarm leave --force
 
             docker swarm init --advertise-addr 64.225.28.58
 
-            docker stack deploy -c docker-compose.yml -c docker-compose.prod.yml neucrapp
+            docker stack deploy -c docker-compose.yml -c docker-compose.prod.yml webbackendapp
 
-            docker stack ls 
-
-            docker node ls
-
-            docker stack services neucrapp
+            docker stack services webbackendapp
