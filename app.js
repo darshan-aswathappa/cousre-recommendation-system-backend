@@ -17,7 +17,7 @@ app.use("/", router);
 app.enable("trust proxy");
 
 app.get("/ping", (req, res) => {
-  res.send("pong");
+  res.send("server up and running!");
 });
 
 async function startServer() {
