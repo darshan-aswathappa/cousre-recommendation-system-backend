@@ -68,8 +68,13 @@ jobs:
               git pull origin main
             fi
 
-            echo "restarting the server"
-            sudo reboot
+            cd
+
+            echo "printing .env"
+            cat .env
+
+            echo "exporting all .env secrets"
+            export $(grep -v '^#' .env | xargs)
 
             cd app/
 
