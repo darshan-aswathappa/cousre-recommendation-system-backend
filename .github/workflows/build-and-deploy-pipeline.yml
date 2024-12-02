@@ -18,6 +18,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            rm -rf webbackendapp/ 
             mkdir -p ~/webbackendapp
 
             cd ~/webbackendapp
@@ -29,6 +30,7 @@ jobs:
             echo "MONGO_USERNAME=${{ secrets.MONGO_USERNAME }}" >> .env
             echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
             echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
+            echo "CLIENT_URL=${{ secrets.CLIENT_URL }}" >> .env
 
             if [ ! -d ".git" ]; then
               git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
