@@ -9,6 +9,7 @@ services:
       - JWT_SECRET=${JWT_SECRET}
       - MONGO_USERNAME=${MONGO_USERNAME}
       - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - CLIENT_URL=${CLIENT_URL}
     env_file:
       - .env
 
