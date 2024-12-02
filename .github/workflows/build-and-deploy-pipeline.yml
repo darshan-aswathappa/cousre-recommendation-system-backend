@@ -50,4 +50,4 @@ jobs:
             rm -rf app
             mkdir app
             cd app/
-            git pull https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
+            git clone https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
