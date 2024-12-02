@@ -46,13 +46,8 @@ jobs:
             echo "CLIENT_URL=${{ secrets.CLIENT_URL }}" >> .env
 
             docker compose down -v
-            if [ "$(docker ps -q)" ];then
-              docker stop $(docker ps -aq)
-              docker rm $(docker ps -aq)
-            fi
-            if [ "$(docker images -q)" ];then
-              docker rmi -f $(docker images -q)
-            fi
-            if [ "$(docker volume ls -q)" ];then
-              docker volume rm $(docker volume ls -q)
-            fi
+
+            rm -rf app
+            mkdir app
+            cd app/
+            git pull https://github.com/darshan-aswathappa/cousre-recommendation-system-backend.git .
