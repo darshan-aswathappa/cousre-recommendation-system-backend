@@ -15,11 +15,7 @@ const fetchResumeMatchController = async (req, res) => {
     let prodResponse;
     if (process.env.NODE_ENV == "production") {
       console.log("Production mode");
-      if (
-        user.resumeData === null ||
-        user.userResumeParsedDetails === null ||
-        initialMessage != ""
-      ) {
+      if (user.resumeData === null || user.userResumeParsedDetails === null) {
         console.log("Building resume recommendation");
         prodResponse = await callFetchAgent(
           client,
