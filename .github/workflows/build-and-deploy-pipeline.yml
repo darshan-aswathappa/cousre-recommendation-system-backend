@@ -37,6 +37,8 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            echo "starting!"
+
             if ! grep -q "NODE_ENV=production" .env; then
               echo "NODE_ENV=production" >> .env
             fi
