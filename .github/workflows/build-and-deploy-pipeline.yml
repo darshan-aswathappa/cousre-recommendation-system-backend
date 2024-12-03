@@ -85,4 +85,18 @@ jobs:
             docker compose -f docker-compose.yml -f docker-compose.prod.yml pull
 
             echo "deploying latest build"
-            docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+            docker swarm init --advertise-addr 165.22.15.114
+
+            echo "deploying latest build"
+            docker stack deploy -c docker-compose.yml -c docker-compose.prod.yml webbackendapp
+
+            echo "get all nodes"
+            docker node ls
+
+            echo "get all stacks"
+            docker stack ls
+
+            echo "list all services for webbackendapp"
+            docker stack services webbackendapp
+
+            docker stack ps
