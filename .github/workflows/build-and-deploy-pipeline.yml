@@ -78,23 +78,11 @@ jobs:
 
             cd app/
 
-            echo "tearing down containers"
-            docker compose down -v
+            echo "tearing down stacks"
+            docker stack rm webbackendapp
 
             echo "pulling latest build"
             docker compose -f docker-compose.yml -f docker-compose.prod.yml pull
 
             echo "deploying latest build"
-            docker swarm init --advertise-addr 165.22.15.114
-
-            if [ $(docker stack ls | grep -c webbackendapp) -gt 0 ]; then
-              echo "removing existing stack"
-              docker stack rm webbackendapp
-              sleep 5
-            fi
-
-            echo "deploying latest build"
-            docker stack deploy -c docker-compose.yml -c docker-compose.prod.yml webbackendapp
-
-            echo "get all nodes"
-            docker node ls
+            docker stack -c docker-compose.yml -c docker-compose.prod.yml webbackendapp
