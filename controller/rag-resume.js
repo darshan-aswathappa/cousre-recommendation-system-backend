@@ -13,8 +13,6 @@ const {
   SystemMessage,
 } = require("@langchain/core/messages");
 const system_prompt = require("../core/ai/prompt/system_prompt");
-const { parseResumeToJson } = require("../core/core");
-const formatConvHistory = require("../core/ai/helper/formatConversationHistory");
 
 let result;
 let resumeData;

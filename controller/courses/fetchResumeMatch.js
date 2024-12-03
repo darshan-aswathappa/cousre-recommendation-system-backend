@@ -1,5 +1,4 @@
 const callFetchAgent = require("./callFetchAgentController");
-const { parseResumeToJson } = require("../../core/core");
 const client = require("../../database/core");
 const testData = require("../../asset/dummy_data.json");
 const User = require("../../database/model/user.model");

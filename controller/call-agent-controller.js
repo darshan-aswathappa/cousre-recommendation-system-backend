@@ -1,5 +1,3 @@
-const system_prompt = require("../core/ai/prompt/system_prompt");
-const { parseResumeToJson, generateResumeEmbeddings } = require("../core/core");
 const getSemesterPlan = require("../controller/rag-resume");
 
 const callAgentController = async (req, res) => {
