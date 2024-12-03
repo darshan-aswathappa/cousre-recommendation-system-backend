@@ -16,8 +16,8 @@ const fetchResumeMatchController = async (req, res) => {
     if (process.env.NODE_ENV == "production") {
       console.log("Production mode");
       if (
-        user.resumeData === null &&
-        user.userResumeParsedDetails === null &&
+        user.resumeData === null ||
+        user.userResumeParsedDetails === null ||
         initialMessage != ""
       ) {
         console.log("Building resume recommendation");
