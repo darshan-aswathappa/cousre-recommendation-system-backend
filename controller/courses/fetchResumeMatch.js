@@ -1,4 +1,5 @@
 const callFetchAgent = require("./callFetchAgentController");
+const { parseResumeToJson } = require("../../core/core");
 const client = require("../../database/core");
 const testData = require("../../asset/dummy_data.json");
 const User = require("../../database/model/user.model");
@@ -9,11 +10,14 @@ const fetchResumeMatchController = async (req, res) => {
   const userId = req.body.userId;
   try {
     const user = await User.findOne({ _id: new ObjectId(userId) });
+    console.log(user);
+
     let prodResponse;
     if (process.env.NODE_ENV == "production") {
+      console.log("Production mode");
       if (
         user.resumeData === null &&
-        user.userResumeParsedDetails != null &&
+        user.userResumeParsedDetails === null &&
         initialMessage != ""
       ) {
         console.log("Building resume recommendation");
