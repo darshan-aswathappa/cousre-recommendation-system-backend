@@ -11,12 +11,13 @@ const fetchResumeMatchController = async (req, res) => {
   const initialMessage = req.body.message;
   const userId = req.body.userId;
 
+  if (fastProd) {
+    setTimeout(() => {
+      res.send(testData);
+    }, 60000);
+  }
+
   try {
-    if (fastProd) {
-      setTimeout(() => {
-        res.send(testData);
-      }, 60000);
-    }
     const user = await User.findOne({ _id: new ObjectId(userId) });
     let prodResponse;
     if (user.resumeData === null || user.userResumeParsedDetails === null) {
