@@ -13,6 +13,8 @@ const uploadParseResumeController = async (req, res) => {
   }
 
   const resumeParsedData = await parseResumeToJson(req.file.buffer);
+  console.log("============")
+  console.log(resumeParsedData);
   user.userResumeParsedDetails = resumeParsedData;
 
   await user.save();

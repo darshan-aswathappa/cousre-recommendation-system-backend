@@ -49,6 +49,7 @@ const parseResumeToJson = async (dataBuffer) => {
     const projects = jsonData.projects;
     return { location, email, skills, education, experience, projects };
   } catch (error) {
+    console.log(error);
     return {};
   }
 };
