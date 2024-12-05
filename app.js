@@ -14,7 +14,7 @@ app.use(
     origin:
       process.env.NODE_ENV === "development"
         ? process.env.LOCAL
-        : "http://137.184.214.177:8000",
+        : "http://159.203.135.38:8000",
     credentials: true,
   })
 );

@@ -17,7 +17,7 @@ const generateTokenAndSetCookie = (res, userId) => {
         secure: false,
         sameSite: "Lax",
         maxAge: 7 * 24 * 60 * 60 * 1000,
-        domain: "137.184.214.177",
+        domain: "159.203.135.38",
         path: "/",
       });
 
