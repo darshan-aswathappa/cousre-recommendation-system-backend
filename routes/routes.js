@@ -21,6 +21,7 @@ const {
   checkAuth,
   getAllUsers,
   getUser,
+  deleteUser,
 } = require("../controller/auth/auth-controller");
 const verifyToken = require("../middleware/verifyToken");
 const getCourseRecommendationById = require("../controller/courses/fetchRecommendationById");
@@ -40,6 +41,7 @@ router.post("/api/auth/verify-email", verifyEmail);
 router.post("/api/auth/forgot-password", forgotPassword);
 router.post("/api/auth/reset-password/:token", resetPassword);
 router.get("/api/auth/getAllUsers", getAllUsers);
+router.delete("/api/auth/deleteUser/:userId", deleteUser);
 router.put("/reupload-resume/:userId", deleteResumeDataController);
 router.get("/api/auth/get-user/:userId", getUser);
 
