@@ -11,15 +11,19 @@ const fetchResumeMatchController = async (req, res) => {
   const initialMessage = req.body.message;
   const userId = req.body.userId;
 
-  if (fastProd) {
-    setTimeout(() => {
-      res.send(testData);
-    }, 60000);
-  }
-
   try {
     const user = await User.findOne({ _id: new ObjectId(userId) });
     let prodResponse;
+
+    if (fastProd) {
+      setTimeout(async () => {
+        user.resumeData = testData;
+        user.selectedCourses = initialMessage;
+        await user.save();
+        res.send(testData);
+      }, 20000);
+    }
+
     if (user.resumeData === null || user.userResumeParsedDetails === null) {
       console.log("Building resume recommendation");
       prodResponse = await callFetchAgent(
