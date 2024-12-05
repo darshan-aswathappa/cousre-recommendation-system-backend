@@ -1,6 +1,6 @@
 [
   {
-    "_id": "6737e70f53f6ff0e79aa3af1",
+    "_id": { "$oid": "6737e70f53f6ff0e79aa3af1" },
     "name": "CSYE",
     "number": "6200",
     "subjectName": "Concepts of Object-Oriented Design",
@@ -14,7 +14,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71053f6ff0e79aa3af2",
+    "_id": { "$oid": "6737e71053f6ff0e79aa3af2" },
     "name": "CSYE",
     "number": "6202",
     "subjectName": "Concepts of Object-Oriented Design with C#",
@@ -28,7 +28,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71053f6ff0e79aa3af3",
+    "_id": { "$oid": "6737e71053f6ff0e79aa3af3" },
     "name": "CSYE",
     "number": "6205",
     "subjectName": "Concepts of Object-Oriented Design with C++",
@@ -42,7 +42,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71153f6ff0e79aa3af4",
+    "_id": { "$oid": "6737e71153f6ff0e79aa3af4" },
     "name": "CSYE",
     "number": "6220",
     "subjectName": "Enterprise Software Design",
@@ -56,7 +56,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71253f6ff0e79aa3af5",
+    "_id": { "$oid": "6737e71253f6ff0e79aa3af5" },
     "name": "CSYE",
     "number": "6225",
     "subjectName": "Network Structures and Cloud Computing",
@@ -70,7 +70,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71253f6ff0e79aa3af6",
+    "_id": { "$oid": "6737e71253f6ff0e79aa3af6" },
     "name": "CSYE",
     "number": "6230",
     "subjectName": "Operating Systems",
@@ -84,7 +84,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71353f6ff0e79aa3af7",
+    "_id": { "$oid": "6737e71353f6ff0e79aa3af7" },
     "name": "CSYE",
     "number": "6305",
     "subjectName": "Introduction to Quantum Computing with Applications",
@@ -98,7 +98,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71353f6ff0e79aa3af8",
+    "_id": { "$oid": "6737e71353f6ff0e79aa3af8" },
     "name": "CSYE",
     "number": "7105",
     "subjectName": "High-Performance Parallel Machine Learning and AI",
@@ -112,7 +112,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71453f6ff0e79aa3af9",
+    "_id": { "$oid": "6737e71453f6ff0e79aa3af9" },
     "name": "CSYE",
     "number": "7125",
     "subjectName": "Advanced Cloud Computing",
@@ -126,7 +126,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71453f6ff0e79aa3afa",
+    "_id": { "$oid": "6737e71453f6ff0e79aa3afa" },
     "name": "CSYE",
     "number": "7200",
     "subjectName": "Big-Data System Engineering Using Scala",
@@ -140,7 +140,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71553f6ff0e79aa3afb",
+    "_id": { "$oid": "6737e71553f6ff0e79aa3afb" },
     "name": "CSYE",
     "number": "7215",
     "subjectName": "Foundations of Parallel, Concurrent, and Multithreaded Programming",
@@ -154,7 +154,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71553f6ff0e79aa3afc",
+    "_id": { "$oid": "6737e71553f6ff0e79aa3afc" },
     "name": "CSYE",
     "number": "7220",
     "subjectName": "Deployment and Operation of Software Applications",
@@ -168,7 +168,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71653f6ff0e79aa3afd",
+    "_id": { "$oid": "6737e71653f6ff0e79aa3afd" },
     "name": "CSYE",
     "number": "7230",
     "subjectName": "Software Engineering",
@@ -182,7 +182,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71753f6ff0e79aa3afe",
+    "_id": { "$oid": "6737e71753f6ff0e79aa3afe" },
     "name": "CSYE",
     "number": "7235",
     "subjectName": "Model-Driven Architecture",
@@ -196,7 +196,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71753f6ff0e79aa3aff",
+    "_id": { "$oid": "6737e71753f6ff0e79aa3aff" },
     "name": "CSYE",
     "number": "7270",
     "subjectName": "Building Virtual Environments",
@@ -210,7 +210,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71853f6ff0e79aa3b00",
+    "_id": { "$oid": "6737e71853f6ff0e79aa3b00" },
     "name": "CSYE",
     "number": "7280",
     "subjectName": "User Experience Design and Testing",
@@ -224,7 +224,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71853f6ff0e79aa3b01",
+    "_id": { "$oid": "6737e71853f6ff0e79aa3b01" },
     "name": "CSYE",
     "number": "7370",
     "subjectName": "Deep Learning and Reinforcement Learning in Game Engineering",
@@ -238,7 +238,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71953f6ff0e79aa3b02",
+    "_id": { "$oid": "6737e71953f6ff0e79aa3b02" },
     "name": "CSYE",
     "number": "7380",
     "subjectName": "Theory and Practical Applications of AI Generative Modeling",
@@ -252,7 +252,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71953f6ff0e79aa3b03",
+    "_id": { "$oid": "6737e71953f6ff0e79aa3b03" },
     "name": "CSYE",
     "number": "7470",
     "subjectName": "Advanced Game Analytics",
@@ -266,7 +266,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e71a53f6ff0e79aa3b04",
+    "_id": { "$oid": "6737e71a53f6ff0e79aa3b04" },
     "name": "CSYE",
     "number": "7550",
     "subjectName": "Distributed Intelligent Agents in the Metaverse",
@@ -280,7 +280,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72353f6ff0e79aa3b13",
+    "_id": { "$oid": "6737e72353f6ff0e79aa3b13" },
     "name": "DAMG",
     "number": "6105",
     "subjectName": "Data Science Engineering with Python",
@@ -294,7 +294,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72353f6ff0e79aa3b14",
+    "_id": { "$oid": "6737e72353f6ff0e79aa3b14" },
     "name": "DAMG",
     "number": "6210",
     "subjectName": "Data Management and Database Design",
@@ -308,7 +308,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72453f6ff0e79aa3b15",
+    "_id": { "$oid": "6737e72453f6ff0e79aa3b15" },
     "name": "DAMG",
     "number": "7105",
     "subjectName": "Intelligent Data Modeling and Presentation for Engineers",
@@ -322,7 +322,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72553f6ff0e79aa3b16",
+    "_id": { "$oid": "6737e72553f6ff0e79aa3b16" },
     "name": "DAMG",
     "number": "7245",
     "subjectName": "Big-Data Systems and Intelligence Analytics",
@@ -336,7 +336,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72553f6ff0e79aa3b17",
+    "_id": { "$oid": "6737e72553f6ff0e79aa3b17" },
     "name": "DAMG",
     "number": "7250",
     "subjectName": "Big Data Architecture and Governance",
@@ -350,7 +350,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72753f6ff0e79aa3b18",
+    "_id": { "$oid": "6737e72753f6ff0e79aa3b18" },
     "name": "DAMG",
     "number": "7275",
     "subjectName": "Advanced Database Management Systems",
@@ -364,7 +364,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72753f6ff0e79aa3b19",
+    "_id": { "$oid": "6737e72753f6ff0e79aa3b19" },
     "name": "DAMG",
     "number": "7290",
     "subjectName": "Data Warehousing and Business Intelligence",
@@ -378,7 +378,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72853f6ff0e79aa3b1a",
+    "_id": { "$oid": "6737e72853f6ff0e79aa3b1a" },
     "name": "DAMG",
     "number": "7325",
     "subjectName": "Introduction to Information Technology Auditing",
@@ -392,7 +392,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72853f6ff0e79aa3b1b",
+    "_id": { "$oid": "6737e72853f6ff0e79aa3b1b" },
     "name": "DAMG",
     "number": "7350",
     "subjectName": "Systems and Cybersecurity Fundamentals",
@@ -406,7 +406,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72953f6ff0e79aa3b1c",
+    "_id": { "$oid": "6737e72953f6ff0e79aa3b1c" },
     "name": "DAMG",
     "number": "7370",
     "subjectName": "Designing Advanced Data Architectures for Business Intelligence",
@@ -420,7 +420,7 @@
     "hasCoreReq": false
   },
   {
-    "_id": "6737e72953f6ff0e79aa3b1d",
+    "_id": { "$oid": "6737e72953f6ff0e79aa3b1d" },
     "name": "DAMG",
     "number": "7390",
     "subjectName": "Advances in Hybrid Data Integration and Engineering",
