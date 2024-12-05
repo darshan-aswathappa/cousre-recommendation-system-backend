@@ -7,8 +7,17 @@ const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 3000;
+console.log("NODE_ENV:", process.env.NODE_ENV);
 
-app.use(cors({ origin: "http://137.184.214.177:8000", credentials: true }));
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === "development"
+        ? process.env.LOCAL
+        : "http://137.184.214.177:8000",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());

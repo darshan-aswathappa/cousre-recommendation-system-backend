@@ -5,14 +5,21 @@ const generateTokenAndSetCookie = (res, userId) => {
     expiresIn: "7d",
   });
 
-  res.cookie("token", token, {
-    httpOnly: true,
-    secure: false,
-    sameSite: "Lax",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-    domain: "137.184.214.177",
-    path: "/",
-  });
+  process.env.NODE_ENV === "development"
+    ? res.cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+      })
+    : res.cookie("token", token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: "Lax",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        domain: "137.184.214.177",
+        path: "/",
+      });
 
   return token;
 };

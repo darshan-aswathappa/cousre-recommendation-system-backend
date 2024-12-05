@@ -13,32 +13,23 @@ const fetchResumeMatchController = async (req, res) => {
     console.log(user);
 
     let prodResponse;
-    if (process.env.NODE_ENV == "production") {
-      console.log("Production mode");
-      if (user.resumeData === null || user.userResumeParsedDetails === null) {
-        console.log("Building resume recommendation");
-        prodResponse = await callFetchAgent(
-          client,
-          initialMessage,
-          user.userResumeParsedDetails
-        );
-        user.resumeData = prodResponse;
-        user.selectedCourses = initialMessage;
-        await user.save();
-        console.log("Saved Resume data");
-      } else {
-        console.log("Resume recommendation already exists");
-        prodResponse = user.resumeData;
-      }
-      console.log("Displaying production data.");
-      res.send(prodResponse);
+    if (user.resumeData === null || user.userResumeParsedDetails === null) {
+      console.log("Building resume recommendation");
+      prodResponse = await callFetchAgent(
+        client,
+        initialMessage,
+        user.userResumeParsedDetails
+      );
+      user.resumeData = prodResponse;
+      user.selectedCourses = initialMessage;
+      await user.save();
+      console.log("Saved Resume data");
     } else {
-      const devResponse = testData;
-      console.log("Displaying mock data.");
-      setTimeout(() => {
-        res.send(devResponse);
-      }, 5000);
+      console.log("Resume recommendation already exists");
+      prodResponse = user.resumeData;
     }
+    console.log("Displaying production data.");
+    res.send(prodResponse);
   } catch (error) {
     console.error("Error starting conversation:", error);
     res.status(500).json({ error: "Internal server error" });
