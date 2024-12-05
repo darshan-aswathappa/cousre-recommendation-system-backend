@@ -5,13 +5,19 @@ const testData = require("../../asset/dummy_data.json");
 const User = require("../../database/model/user.model");
 const { ObjectId } = require("mongodb");
 
+const fastProd = true;
+
 const fetchResumeMatchController = async (req, res) => {
   const initialMessage = req.body.message;
   const userId = req.body.userId;
-  try {
-    const user = await User.findOne({ _id: new ObjectId(userId) });
-    console.log(user);
 
+  try {
+    if (fastProd) {
+      setTimeout(() => {
+        res.send(testData);
+      }, 60000);
+    }
+    const user = await User.findOne({ _id: new ObjectId(userId) });
     let prodResponse;
     if (user.resumeData === null || user.userResumeParsedDetails === null) {
       console.log("Building resume recommendation");
