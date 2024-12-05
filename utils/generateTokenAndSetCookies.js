@@ -10,8 +10,6 @@ const generateTokenAndSetCookie = (res, userId) => {
     secure: false,
     sameSite: "None",
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    domain: process.env.CLIENT_URL,
-    path: "/",
   });
 
   return token;
